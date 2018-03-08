@@ -157,3 +157,32 @@ export PATH=$PATH:./node_modules/.bin
 ```
 
 Then restart terminal.
+
+# Step 2
+
+## api/index.js
+
+Create routing for api calls.
+```
+import express from 'express';
+const router = express.Router();
+
+router.get('/', (req, res)=>{
+    res.send({data: []});
+})
+
+export default router;
+```
+
+## server.js
+
+Implement apiRouter previously created. And set server to use 'public' folder for static html files; also change view engine to ejs templates.
+
+```
+import apiRouter from './api';
+server.set('view engine', 'ejs');
+```
+Place this below your server.get functions else it loads public index.html file.
+```
+server.use(express.static('public'));
+```
