@@ -9,7 +9,6 @@
  npm install -D babel-cli babel-loader babel-preset-es2015 babel-preset-stage-2 babel-preset-react
  npm install -D nodemon
  npm i -D eslint eslint-plugin-react babel-eslint
-
 ```
 
 create folders 'api', 'src', 'public'
@@ -31,7 +30,6 @@ export const logStars = function(message) {
 export default {
   port: env.PORT || 3001
 };
-
 ```
 ## server.js
 
@@ -45,7 +43,6 @@ server.get('/', (req, res)=>{
 })
 
 server.listen(config.port);
-
 ```
 
 ## .babelrc
@@ -54,7 +51,6 @@ server.listen(config.port);
 {
     "presets": ["react", "es2015", "stage-2"]
 }
-
 ```
 
 ## .eslintrc.js
@@ -86,7 +82,6 @@ module.exports = {
       "no-console": ["warn", { "allow": ["info", "error"] }]
     }
   };
-  
 ```
 
 
@@ -125,7 +120,6 @@ module.exports = {
     "start": "nodemon --exec babel-node server.js --ignore public/",
     "dev": "webpack -wd"
   }
-
 ```
 # Running server
 
@@ -133,14 +127,12 @@ To run server with babel support
 
 ```
 ./node_modules/.bin/babel-node server.js
-
 ```
 
 Or
 
 ```
 npm start
-
 ```
 
 Running server without babel
