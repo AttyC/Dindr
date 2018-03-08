@@ -1,4 +1,4 @@
-import './config';
+import config from './config';
 import express from 'express';
 const server = express();
 
@@ -6,4 +6,4 @@ server.get('/', (req, res)=>{
     res.send('hello');
 })
 
-server.listen(3000);
+server.listen(config.port);
