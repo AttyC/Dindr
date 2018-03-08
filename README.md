@@ -186,3 +186,62 @@ Place this below your server.get functions else it loads public index.html file.
 ```
 server.use(express.static('public'));
 ```
+
+## index.ejs
+
+ejs templates are the same as html however they enable embedded JavaScript.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <%= Math.random() %>
+</body>
+</html>
+```
+
+However this can be spilt into partials.
+
+### header.ejs
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+```
+
+### index.ejs
+```
+<%- include('header') -%>
+<%- content -%>
+<%- include('footer') -%>
+```
+
+### footer.ejs
+```
+</body>
+</html>
+```
+
+### server.js
+And at render we can pass a string into 'content'
+
+```
+server.get('/', (req, res)=>{
+    res.render('index', {
+        content: 'Hello Partials!'
+    });
+})
+```
