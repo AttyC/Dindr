@@ -1,5 +1,5 @@
 const request = require('supertest');
-const server = require('../server')
+const server = require('../server');
 
 describe('GET/api/users - gets all users', () => {
   let expectedProps = ['_id', 'username', 'email', 'skills', 'experience'];
@@ -32,7 +32,7 @@ describe('GET/api/users - gets all users', () => {
         let extraProps = Object.keys(res.body[0]).filter((key) => {
           return !expectedProps.includes(key);
         });
-        expect(extraProps.length).toBe(0)
+        expect(extraProps.length).toBe(0);
       });
     });
   });
@@ -47,15 +47,15 @@ describe('GET/api/users/:username - get user by username', () => {
       const reqKeys = ['_id', 'username', 'email', 'skills', 'experience'];
       const item = res.body[0];
       reqKeys.forEach((key) => {
-         expect(Object.keys(item)).toContain(key);
-       });
+        expect(Object.keys(item)).toContain(key);
+      });
       expect(typeof item._id).toBe('string');
       expect(typeof item.username).toBe('string');
       expect(typeof item.email).toBe('string');
       expect(typeof item.skills).toBe('object');
       expect(typeof item.experience).toBe('string');
     });
-  })
+  });
 
   it('should return a user w/ requested id', () => {
     return request(server)
@@ -63,14 +63,14 @@ describe('GET/api/users/:username - get user by username', () => {
     .expect(200)
     .then((res) => {
       expect(res.body).toEqual([{
-        "username": "Leigh-ann",
-        "email": "Leigh-ann@123.com",
-        "skills": [
-          "'Ruby,'JS'"
+        'username': 'Leigh-ann',
+        'email': 'Leigh-ann@123.com',
+        'skills': [
+          '\'Ruby,\'JS\''
         ],
-        "experience": "none",
-        "_id": "5aa30ecacb2d86541acedad8",
-        "__v": 0
+        'experience': 'none',
+        '_id': '5aa30ecacb2d86541acedad8',
+        '__v': 0
       }]);
     });
   });
@@ -89,7 +89,7 @@ describe('GET/api/users/:username - get user by username', () => {
       })
     ]);
   });
-})
+});
 // working with call backs/ promises
 describe('GET /api/users', function() {
   it('respond with json', function() {
@@ -99,9 +99,9 @@ describe('GET /api/users', function() {
       .expect(200)
       .then(res => {
         expect(typeof res.body[0].username).toBe('string');
-        expect(res.body[0].username).toBe("Sam");
-        expect(res.body[0].email).toBe("sam@123.com");
-      })
+        expect(res.body[0].username).toBe('Sam');
+        expect(res.body[0].email).toBe('sam@123.com');
+      });
   });
 });
 
@@ -113,8 +113,8 @@ describe('GET /api/users', function() {
       .expect(200)
       .then(res => {
         expect(typeof res.body[1].username).toBe('string');
-        expect(res.body[1].username).toBe("Leigh-ann");
-        expect(res.body[1].email).toBe("Leigh-ann@123.com");
-      })
+        expect(res.body[1].username).toBe('Leigh-ann');
+        expect(res.body[1].email).toBe('Leigh-ann@123.com');
+      });
   });
 });

@@ -5,8 +5,8 @@ const UserPreview = (user) => {
     <div className="name"> {user.username} </div>
     <div className="skills"> {user.skills} </div>
     <div className="experience"> {user.experience} </div>
-  </div>)
+  </div>);
 
-}
+};
 
-export default UserPreview
+export default UserPreview;
