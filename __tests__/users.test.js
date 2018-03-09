@@ -2,7 +2,7 @@ const request = require('supertest');
 const server = require('../server');
 
 describe('GET/api/users - gets all users', () => {
-  let expectedProps = ['_id', 'username', 'email', 'skills', 'experience'];
+  let expectedProps = ['_id', 'username', 'email', 'skills', 'experience', '__v'];
   it('should return JSON array', () => {
     return request(server)
     .get('/api/users')
@@ -23,6 +23,7 @@ describe('GET/api/users - gets all users', () => {
         expect(sampleKeys.includes(key)).toBe(true);
       });
     });
+  });
     it('shouldnt return objs with extra props', ()=>{
       return request(server)
       .get('/api/users')
@@ -35,7 +36,6 @@ describe('GET/api/users - gets all users', () => {
         expect(extraProps.length).toBe(0);
       });
     });
-  });
 });
 
 describe('GET/api/users/:username - get user by username', () => {
@@ -77,15 +77,15 @@ describe('GET/api/users/:username - get user by username', () => {
 
   it('should 400 on a request for a nonexistant id', () => {
     return Promise.all([
-      request(server).get('/api/users/Simon')
+      request(server).get('/api/users/Tomonic')
       .expect(400)
       .then((res) => {
-        expect(res.body.message).toBe('No item found with id: -32');
+        expect(res.body.message).toBe('No user found with username: Tomonic');
       }),
       request(server).get('/api/users/99999')
       .expect(400)
       .then((res) => {
-        expect(res.body.message).toBe('No item found with id: 99999');
+        expect(res.body.message).toBe('No user found with username: 99999');
       })
     ]);
   });

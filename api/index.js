@@ -11,7 +11,14 @@ router.get('/users', (req, res)=>{
 var findUserByUserName = function(req,res){
   var username = req.params.username;
   User.find({ username: username } ).then( user => {
-    res.json(user);
+    if (user.length !== 0 ) {
+      res.json(user);
+    } else {
+      res.status(400).json({
+        status: res.status,
+        message: `No user found with username: ${username}`
+      });
+    }
   });
 };
 router.get('/users/:username', findUserByUserName);

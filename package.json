@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node server.js --ignore public/ & npm run dev",
-    "test": "jest",
+    "test": "jest --verbose",
     "dev": "webpack -wd"
   },
   "author": "Phil Budgen, Leigh-Ann Gant, Simon Bao, Samuel Wood, Antonia Cronin, Alex Sergides",
