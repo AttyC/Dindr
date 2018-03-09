@@ -273,4 +273,14 @@ For React to work we need to change our index.ejs to include a div with the id o
 <div id='root'><%- content -%></div>
 <%- include('footer') -%>
 ```
+And include the 'bundle.js' file, most commonly placed in the 'footer.ejs'
 
+#### views/index.ejs
+```
+<script src="/bundle.js"></script>
+```
+
+# Step 3 - React partials and states
+# Step 4 - Data
+
+npm i -S axios

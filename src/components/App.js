@@ -1,12 +1,36 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import axios from 'axios';
+import UserPreview from './UserPreview'
 
-const App = () => {
-    return(
-        <div className='App'>
-            <h2>React Component!!</h2>
-        </div>
+class App extends React.Component {
+  state = { users: [] }
+//this.props.initialMessage
+  componentDidMount() {
+    // Does stuff when first mounted
+    axios.get('/api/users')
+      .then(res => {
+        this.setState({ users: res.data.users })
+      })
+  };
+
+  componentWillUnmount() {
+    // Runs when component gets unmounted/replaced
+    console.log('unmounted')
+  };
+
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Users</h1>
+        <ul>
+          {this.state.users.map(user =>
+           <div key={user.id}> <li><UserPreview {...user} /> </li></div>
+          )}
+        </ul>
+      </div>
     )
+  }
 }
 
 export default App;
