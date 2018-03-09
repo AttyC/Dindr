@@ -6,7 +6,7 @@ const UserPreview = (user) => {
     <div className="skills"> {user.skills} </div>
     <div className="experience"> {user.experience} </div>
   </div>)
-  
+
 }
 
 export default UserPreview

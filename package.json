@@ -5,11 +5,12 @@
   "main": "config.js",
   "dependencies": {
     "axios": "^0.15.0",
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.18.2",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "json-loader": "^0.5.4",
     "mongodb": "^2.2.10",
+    "mongoose": "^5.0.9",
     "node-sass-middleware": "^0.9.8",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
@@ -31,6 +32,6 @@
     "start": "nodemon --exec babel-node server.js --ignore public/ & npm run dev",
     "dev": "webpack -wd"
   },
-  "author": "Phil Budgen, Leigh-Ann Gant, Simon Bao, Samuel Wood, Antonia Cronin, Alex Sergides", 
+  "author": "Phil Budgen, Leigh-Ann Gant, Simon Bao, Samuel Wood, Antonia Cronin, Alex Sergides",
   "license": "ISC"
 }

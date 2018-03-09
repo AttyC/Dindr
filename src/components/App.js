@@ -9,7 +9,8 @@ class App extends React.Component {
     // Does stuff when first mounted
     axios.get('/api/users')
       .then(res => {
-        this.setState({ users: res.data.users })
+        console.log({res});
+        this.setState({ users: res.data })
       })
   };
 
@@ -25,7 +26,7 @@ class App extends React.Component {
         <h1>Users</h1>
         <ul>
           {this.state.users.map(user =>
-           <div key={user.id}> <li><UserPreview {...user} /> </li></div>
+           <div key={user._id}> <li><UserPreview {...user} /> </li></div>
           )}
         </ul>
       </div>
