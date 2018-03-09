@@ -69,7 +69,7 @@ describe('GET/api/users/:username - get user by username', () => {
           "'Ruby,'JS'"
         ],
         "experience": "none",
-        "_id": "5aa2af36db3c302b999b668b",
+        "_id": "5aa30ecacb2d86541acedad8",
         "__v": 0
       }]);
     });

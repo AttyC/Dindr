@@ -24051,6 +24051,35 @@
 	
 	    var _this = _possibleConstructorReturn(this, (UserNewForm.__proto__ || Object.getPrototypeOf(UserNewForm)).call(this, props));
 	
+	    _this.addToUsers = function (event) {
+	      event.preventDefault();
+	
+	      _this.setState({
+	        email: event.target.value,
+	        username: event.target.value,
+	        skills: event.target.value,
+	        experience: event.target.value
+	      });
+	
+	      _axios2.default.post('/api/users/new', {
+	        username: _this.state.username,
+	        email: _this.state.email,
+	        skills: _this.state.skills,
+	        experience: _this.state.experience
+	      }).then(function (response) {
+	        console.log(response, 'User added');
+	      }).catch(function (err) {
+	        console.log(err, 'User not added, try again');
+	      });
+	
+	      _this.setState({
+	        username: '',
+	        email: '',
+	        skills: '',
+	        experience: ''
+	      });
+	    };
+	
 	    _this.state = {
 	      username: '',
 	      email: '',
@@ -24062,7 +24091,7 @@
 	    _this.emailChange = _this.emailChange.bind(_this);
 	    _this.skillChange = _this.skillChange.bind(_this);
 	    _this.experienceChange = _this.experienceChange.bind(_this);
-	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    // this.handleSubmit = this.handleSubmit.bind(this);
 	
 	    return _this;
 	  }
@@ -24098,36 +24127,6 @@
 	      });
 	    }
 	  }, {
-	    key: 'handleSubmit',
-	    value: function handleSubmit(e) {
-	      alert('skjfsdjf' + this.state.email);
-	      e.preventDefault();
-	      var username = this.state.username.trim();
-	      var email = this.state.email.trim();
-	      var skills = this.state.skills.trim();
-	      var experience = this.state.experience.trim();
-	      if (!username || !email || !skills || !experience) {
-	        return;
-	      }
-	      _axios2.default.post('http://localhost:4444/api/users/new', {
-	        username: username,
-	        email: email,
-	        skills: skills,
-	        experience: experience
-	      }).then(function (response) {
-	        console.log(response, 'User added');
-	      }).catch(function (err) {
-	        console.log(err, 'User not added, try again');
-	      });
-	
-	      this.setState({
-	        username: '',
-	        email: '',
-	        skills: '',
-	        experience: ''
-	      });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -24135,7 +24134,7 @@
 	        null,
 	        _react2.default.createElement(
 	          'form',
-	          { onSubmit: this.handleSubmit },
+	          { onSubmit: this.addToUsers },
 	          _react2.default.createElement(
 	            'label',
 	            null,
@@ -24161,8 +24160,7 @@
 	            _react2.default.createElement('input', { type: 'text', onChange: this.experienceChange, value: this.state.experience })
 	          ),
 	          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
-	        ),
-	        'console.log(this.state)'
+	        )
 	      );
 	    }
 	  }]);

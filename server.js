@@ -6,7 +6,9 @@ import mongoose from 'mongoose';
 var url = process.env.MONGOLAB_URI
 
 const server = express();
-server.use(bodyParser.urlencoded({ extended: false }));
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
+
 server.use('/api', apiRouter);
 server.set('view engine', 'ejs');
 
