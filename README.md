@@ -158,7 +158,7 @@ export PATH=$PATH:./node_modules/.bin
 
 Then restart terminal.
 
-# Step 2
+# Step 2 - Routing
 
 ## api/index.js
 
@@ -245,3 +245,32 @@ server.get('/', (req, res)=>{
     });
 })
 ```
+
+# Step 3 - React
+
+## src/index.js
+To use react, we need to import it!
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+```
+Then we can use React to create elements and pass it into a div id of root.
+```
+ReactDOM.render(
+    React.createElement('h2', null, 'Hello React!'),
+    document.getElementById('root')
+);
+```
+
+The render function takes it two statements, first is what it's going to render and second is where.
+
+For the first statement, you can create it like above or pass in an React component. If you creating it, you need to pass it three parameters: tag, attribute and string.
+
+## views/index.ejs
+For React to work we need to change our index.ejs to include a div with the id of root!
+```
+<%- include('header') -%>
+<div id='root'><%- content -%></div>
+<%- include('footer') -%>
+```
+
