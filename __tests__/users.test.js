@@ -118,3 +118,26 @@ describe('GET /api/users', function() {
       });
   });
 });
+
+describe('POST/api/users - create a new user', () => {
+  let user = {
+    username: "PiggieSmalls",
+    email: "Piggie@smalls.co.uk",
+    skills: 'Ruby',
+    experience: 'professional'
+  };
+  it('should accept a new valid user', ()=>{
+    return request(server).post('/api/users/new')
+    .send(user)
+    .then((res) => {
+      expect(res.status).toBe(200);
+      return request(server).get('/api/users');
+    })
+    .then((res) =>{
+      let returnedUser = res.body.find(user => user.username === 'PiggieSmalls');
+      expect(res.status).toBe(200);
+      expect(returnedUser.email).toBe("Piggie@smalls.co.uk")
+      expect(returnedUser.experience).toBe("professional")
+    });
+  });
+});
