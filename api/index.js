@@ -9,16 +9,16 @@ router.get('/users', (req, res)=>{
 })
 
 var findUserByUserName = function(req,res){
-  var userName = req.params.userName;
-  User.find({ userName: userName } ).then( user => {
+  var username = req.params.username;
+  User.find({ username: username } ).then( user => {
       res.json(user)
   });
 }
-router.get('/:userName', findUserByUserName);
+router.get('/users/:username', findUserByUserName);
 
 router.post('/users/new', function(req, res){
   User.create({
-    name: req.body.name,
+    username: req.body.username,
     email: req.body.email,
     skills: req.body.skills,
     experience: req.body.experience

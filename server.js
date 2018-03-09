@@ -34,3 +34,5 @@ mongoose.connect(url, function (err, db){
 server.listen(config.port, ()=>{
     console.log('Server listening on:', config.port);
 });
+
+module.exports = server;

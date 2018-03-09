@@ -9,7 +9,7 @@ export const logStars = function(message) {
 };
 
 export default {
-  port: env.PORT || 3001,
+  port: env.PORT || 4444,
   host: env.HOST || 'localhost',
   get serverUrl() {
     return 'http://${this.host}:${this.port}';

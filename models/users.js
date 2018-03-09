@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-  name : String,
+  username : String,
   email : String,
   skills : Array,
   experience: String

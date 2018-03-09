@@ -23979,6 +23979,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var UserPreview = function UserPreview(user) {
+	  console.log(user);
 	  return _react2.default.createElement(
 	    "div",
 	    { className: "UserPreview" },
@@ -23986,7 +23987,7 @@
 	      "div",
 	      { className: "name" },
 	      " ",
-	      user.name,
+	      user.username,
 	      " "
 	    ),
 	    _react2.default.createElement(
