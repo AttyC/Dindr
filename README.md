@@ -7,7 +7,10 @@ This is an app built to help developers find other developers to pair with.
 
 #### How to set up and app with React and Express
 
-[How to set up and app with React and Express](https://www.gitbook.com/book/leigan0/team-glow/edit#/edit/master/Tutorials/How to set up and app with React and Express.md?_k=qa5hxr)
+[How to set up and app with React and Express](https://leigan0.gitbooks.io/team-glow/content/Tutorials/How%20to%20set%20up%20and%20app%20with%20React%20and%20Express.html)
+
+[How to set up mLab - cloud mongodb](https://leigan0.gitbooks.io/team-glow/content/Mongo/Mlab-set-up.html)
+
 ```
 git clone https://github.com/SimonBao/Dindr
 ```
