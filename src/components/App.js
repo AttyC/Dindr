@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import UserPreview from './UserPreview'
+import UserNewForm from './UserNewForm';
 
 class App extends React.Component {
   state = { users: [] }
@@ -9,7 +10,6 @@ class App extends React.Component {
     // Does stuff when first mounted
     axios.get('/api/users')
       .then(res => {
-        console.log({res});
         this.setState({ users: res.data })
       })
   };
@@ -29,6 +29,7 @@ class App extends React.Component {
            <div key={user._id}> <li><UserPreview {...user} /> </li></div>
           )}
         </ul>
+        < UserNewForm />
       </div>
     )
   }
