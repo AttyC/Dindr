@@ -24031,6 +24031,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _axios = __webpack_require__(/*! axios */ 185);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24054,20 +24058,73 @@
 	      experience: ''
 	    };
 	
-	    _this.handleChange = _this.handleChange.bind(_this);
+	    _this.usernameChange = _this.usernameChange.bind(_this);
+	    _this.emailChange = _this.emailChange.bind(_this);
+	    _this.skillChange = _this.skillChange.bind(_this);
+	    _this.experienceChange = _this.experienceChange.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	
 	    return _this;
 	  }
 	  //
 	
 	
 	  _createClass(UserNewForm, [{
-	    key: 'handleChange',
-	    value: function handleChange(e) {
+	    key: 'usernameChange',
+	    value: function usernameChange(e) {
 	      this.setState({
-	        username: e.target.value,
-	        email: e.target.value,
-	        skills: e.target.value,
+	        username: e.target.value
+	      });
+	    }
+	  }, {
+	    key: 'emailChange',
+	    value: function emailChange(e) {
+	      this.setState({
+	        email: e.target.value
+	      });
+	    }
+	  }, {
+	    key: 'skillChange',
+	    value: function skillChange(e) {
+	      this.setState({
+	        skills: e.target.value
+	      });
+	    }
+	  }, {
+	    key: 'experienceChange',
+	    value: function experienceChange(e) {
+	      this.setState({
 	        experience: e.target.value
+	      });
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      alert('skjfsdjf' + this.state.email);
+	      e.preventDefault();
+	      var username = this.state.username.trim();
+	      var email = this.state.email.trim();
+	      var skills = this.state.skills.trim();
+	      var experience = this.state.experience.trim();
+	      if (!username || !email || !skills || !experience) {
+	        return;
+	      }
+	      _axios2.default.post('http://localhost:4444/api/users/new', {
+	        username: username,
+	        email: email,
+	        skills: skills,
+	        experience: experience
+	      }).then(function (response) {
+	        console.log(response, 'User added');
+	      }).catch(function (err) {
+	        console.log(err, 'User not added, try again');
+	      });
+	
+	      this.setState({
+	        username: '',
+	        email: '',
+	        skills: '',
+	        experience: ''
 	      });
 	    }
 	  }, {
@@ -24083,28 +24140,29 @@
 	            'label',
 	            null,
 	            'Username:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.handleChange, value: this.state.username })
+	            _react2.default.createElement('input', { type: 'text', onChange: this.usernameChange, value: this.state.username })
 	          ),
 	          _react2.default.createElement(
 	            'label',
 	            null,
 	            'Email:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.handleChange, value: this.state.email })
+	            _react2.default.createElement('input', { type: 'text', onChange: this.emailChange, value: this.state.email })
 	          ),
 	          _react2.default.createElement(
 	            'label',
 	            null,
 	            'Skills:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.handleChange, value: this.state.skills })
+	            _react2.default.createElement('input', { type: 'text', onChange: this.skillChange, value: this.state.skills })
 	          ),
 	          _react2.default.createElement(
 	            'label',
 	            null,
 	            'Experience:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.handleChange, value: this.state.experience })
+	            _react2.default.createElement('input', { type: 'text', onChange: this.experienceChange, value: this.state.experience })
 	          ),
 	          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
-	        )
+	        ),
+	        'console.log(this.state)'
 	      );
 	    }
 	  }]);
