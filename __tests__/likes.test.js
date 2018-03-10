@@ -23,39 +23,39 @@ describe('POST/api/users/user_id/likes - create a new like', () => {
 });
 
 //
-// describe('GET/api/users/user_id/likes - gets all individual users likes', () => {
-//   let expectedProps = ['_id', 'nameOfLiker', 'emailOfLiker', 'locationOfLiker', 'message', '__v'];
-//   it('should return JSON array', () => {
-//     return request(server)
-//     .get('/api/users/Sam/likes')
-//     .expect(200)
-//     .then(res => {
-//       //check that it sends back an array
-//       expect(res.body).toBeInstanceOf(Array);
-//     });
-//   });
-//   it('should return objs w/ correct props', () => {
-//     return request(server)
-//     .get('/api/users/Sam/likes')
-//     .expect(200)
-//     .then(res => {
-//       // check for the expected properties
-//       let sampleKeys = Object.keys(res.body[0]);
-//       expectedProps.forEach((key) => {
-//         expect(sampleKeys.includes(key)).toBe(true);
-//       });
-//     });
-//   });
-//     it('shouldnt return objs with extra props', ()=>{
-//       return request(server)
-//       .get('/api/users/Sam/likes')
-//       .expect(200)
-//       .then(res => {
-//         // check for only expectedProps
-//         let extraProps = Object.keys(res.body[0]).filter((key) => {
-//           return !expectedProps.includes(key);
-//         });
-//         expect(extraProps.length).toBe(0);
-//       });
-//     });
-// });
+describe('GET/api/users/user_id/likes - gets all individual users likes', () => {
+  let expectedProps = ['_id', 'nameOfLiker', 'emailOfLiker', 'locationOfLiker', 'message', '__v'];
+  it('should return JSON array', () => {
+    return request(server)
+    .get('/api/users/Sam/likes')
+    .expect(200)
+    .then(res => {
+      //check that it sends back an array
+      expect(res.body).toBeInstanceOf(Array);
+    });
+  });
+  it('should return objs w/ correct props', () => {
+    return request(server)
+    .get('/api/users/Sam/likes')
+    .expect(200)
+    .then(res => {
+      // check for the expected properties
+      let sampleKeys = Object.keys(res.body[0]);
+      expectedProps.forEach((key) => {
+        expect(sampleKeys.includes(key)).toBe(true);
+      });
+    });
+  });
+    it('shouldnt return objs with extra props', ()=>{
+      return request(server)
+      .get('/api/users/Sam/likes')
+      .expect(200)
+      .then(res => {
+        // check for only expectedProps
+        let extraProps = Object.keys(res.body[0]).filter((key) => {
+          return !expectedProps.includes(key);
+        });
+        expect(extraProps.length).toBe(0);
+      });
+    });
+});
