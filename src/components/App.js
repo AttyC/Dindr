@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import UserPreview from './UserPreview';
+import UserProfile from './UserProfile';
 import UserNewForm from './UserNewForm';
 
 class App extends React.Component {
@@ -19,14 +20,13 @@ class App extends React.Component {
     console.log('unmounted');
   }
 
-
   render() {
     return (
       <div className="App">
         <h1>Users</h1>
         <ul>
           {this.state.users.map(user =>
-           <div key={user._id}> <li><UserPreview {...user} /> </li></div>
+           <div key={user._id}> <li><UserPreview {...user} /></li></div>
           )}
         </ul>
         < UserNewForm />
