@@ -16,8 +16,6 @@ class UserNewForm extends React.Component {
     this.emailChange = this.emailChange.bind(this);
     this.skillChange = this.skillChange.bind(this);
     this.experienceChange = this.experienceChange.bind(this);
-   // this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 //
   usernameChange(e) {

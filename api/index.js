@@ -2,12 +2,14 @@ import express from 'express';
 const router = express.Router();
 var User = require('../models/users.js');
 
+// find all users
 router.get('/users', (req, res)=>{
   User.find({}).then(user => {
     res.send(user);
   });
 });
 
+// find user by username within url
 var findUserByUserName = function(req,res){
   var username = req.params.username;
   User.find({ username: username } ).then( user => {
@@ -23,6 +25,7 @@ var findUserByUserName = function(req,res){
 };
 router.get('/users/:username', findUserByUserName);
 
+// create new user
 router.post('/users/new', function(req, res){
   User.create({
     username: req.body.username,
