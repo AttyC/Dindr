@@ -34,7 +34,7 @@
     "webpack": "^1.13.2"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node server.js --ignore public/ & npm run dev",
+    "start": "nodemon --exec babel-node serverStart.js --ignore public/ & npm run dev",
     "test": "jest --verbose",
     "dev": "webpack -wd"
   },

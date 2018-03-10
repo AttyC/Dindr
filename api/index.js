@@ -1,6 +1,7 @@
 import express from 'express';
 const router = express.Router();
 var User = require('../models/users.js');
+var Like = require('../models/likes.js');
 
 // find all users
 router.get('/users', (req, res)=>{
@@ -34,6 +35,19 @@ router.post('/users/new', function(req, res){
     experience: req.body.experience
   }).then(user => {
     res.json(user);
+  });
+});
+
+router.post('/users/:username/likes', (req, res)=>{
+  var username = req.params.username;
+  Like.create({
+    usernameOfLiked_id: username,
+    nameOfLiker: req.body.nameOfLiker,
+    emailOfLiker: req.body.emailOfLiker,
+    locationOfLiker: req.body.locationOfLiker,
+    message: req.body.message
+  }).then(like => {
+    res.json(like);
   });
 });
 
