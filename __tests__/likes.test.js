@@ -55,8 +55,60 @@ describe('GET/api/users/user_id/likes - gets all individual users likes', () => 
         let extraProps = Object.keys(res.body[0]).filter((key) => {
           return !expectedProps.includes(key);
         });
-        console.log(extraProps)
         expect(extraProps.length).toBe(0);
       });
+  });
+});
+
+describe('GET/api/users/:username/likes - get likes by user', () => {
+  it('should return an obj of type Like', () => {
+    return request(server)
+    .get('/api/users/Sam/likes')
+    .expect(200)
+    .then((res) => {
+      const reqKeys = ['_id', 'usernameOfLiked_id', 'nameOfLiker', 'emailOfLiker', 'locationOfLiker', 'message', '__v'];
+      const item = res.body[0];
+      reqKeys.forEach((key) => {
+        expect(Object.keys(item)).toContain(key);
+      });
+      expect(typeof item._id).toBe('string');
+      expect(typeof item.usernameOfLiked_id).toBe('string');
+      expect(typeof item.nameOfLiker).toBe('string');
+      expect(typeof item.emailOfLiker).toBe('string');
+      expect(typeof item.locationOfLiker).toBe('string');
+      expect(typeof item.message).toBe('string');
+    });
+  });
+
+  it('should return all likes only for requested user', () => {
+    return request(server)
+    .get('/api/users/Sam/likes')
+    .expect(200)
+    .then((res) => {
+      expect(res.body[0].usernameOfLiked_id).toBe('Sam');
+    });
+  });
+  it('should return all likes only for requested user', () => {
+    return request(server)
+    .get('/api/users/Leigh-ann/likes')
+    .expect(200)
+    .then((res) => {
+      expect(res.body[0].usernameOfLiked_id).toBe('Leigh-ann');
+    });
+  });
+
+  it('should 400 on a request for a nonexistant id', () => {
+    return Promise.all([
+      request(server).get('/api/users/Simon/likes')
+      .expect(400)
+      .then((res) => {
+        expect(res.body.message).toBe('No likes found for: Simon');
+      }),
+      request(server).get('/api/users/Phil/likes')
+      .expect(400)
+      .then((res) => {
+        expect(res.body.message).toBe('No likes found for: Phil');
+      })
+    ]);
   });
 });
