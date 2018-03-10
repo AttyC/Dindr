@@ -51,4 +51,20 @@ router.post('/users/:username/likes', (req, res)=>{
   });
 });
 
+var findUserLikes = function(req,res){
+  var username = req.params.username;
+  Like.find({ usernameOfLiked_id: username } ).then( userLikes => {
+    if (userLikes.length !== 0 ) {
+      res.json(userLikes);
+    } else {
+      res.status(400).json({
+        status: res.status,
+        message: `No likes found for: ${username}`
+      });
+    }
+  });
+};
+
+router.get('/users/:username/likes', findUserLikes);
+
 export default router;
