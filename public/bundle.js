@@ -23989,24 +23989,25 @@
 	    _react2.default.createElement(
 	      "div",
 	      { className: "name" },
-	      " ",
+	      " Username: ",
 	      user.username,
 	      " "
 	    ),
 	    _react2.default.createElement(
 	      "div",
 	      { className: "skills" },
-	      " ",
+	      " Skills: ",
 	      user.skills,
 	      " "
 	    ),
 	    _react2.default.createElement(
 	      "div",
 	      { className: "experience" },
-	      " ",
+	      " Experience: ",
 	      user.experience,
 	      " "
-	    )
+	    ),
+	    _react2.default.createElement("p", null)
 	  );
 	};
 	
@@ -24091,8 +24092,6 @@
 	    _this.emailChange = _this.emailChange.bind(_this);
 	    _this.skillChange = _this.skillChange.bind(_this);
 	    _this.experienceChange = _this.experienceChange.bind(_this);
-	    // this.handleSubmit = this.handleSubmit.bind(this);
-	
 	    return _this;
 	  }
 	  //
