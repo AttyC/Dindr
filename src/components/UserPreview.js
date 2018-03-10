@@ -5,7 +5,7 @@ import UserProfile from './UserProfile';
 const UserPreview = (user) => {
   return(
     <div className="UserPreview">
-    <div className="name"> {user.username} </div>
+    <div className="name"> <h2>{user.username} </h2></div>
     <div className="skills"> {user.skills} </div>
     <Router>
       <div>
@@ -13,8 +13,6 @@ const UserPreview = (user) => {
         <Route path="/:username" component={() => (<UserProfile {...user} />)} />
       </div>
     </Router>
-    <hr />
-
   </div>)
 
 }

@@ -24,12 +24,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Users</h1>
-        <ul>
+        <h3>Add new User:</h3>< UserNewForm />
+        <ul className="usersList">
           {this.state.users.map(user =>
-           <div key={user._id}> <li><UserPreview {...user} /></li></div>
+           <li key={user._id}> <UserPreview {...user} /></li>
           )}
         </ul>
-        < UserNewForm />
+
       </div>
     );
   }
