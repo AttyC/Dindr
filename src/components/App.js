@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import UserPreview from './UserPreview'
+import UserPreview from './UserPreview';
 import UserNewForm from './UserNewForm';
 
 class App extends React.Component {
@@ -10,14 +10,14 @@ class App extends React.Component {
     // Does stuff when first mounted
     axios.get('/api/users')
       .then(res => {
-        this.setState({ users: res.data })
-      })
-  };
+        this.setState({ users: res.data });
+      });
+  }
 
   componentWillUnmount() {
     // Runs when component gets unmounted/replaced
-    console.log('unmounted')
-  };
+    console.log('unmounted');
+  }
 
 
   render() {
@@ -31,7 +31,7 @@ class App extends React.Component {
         </ul>
         < UserNewForm />
       </div>
-    )
+    );
   }
 }
 

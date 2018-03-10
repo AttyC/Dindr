@@ -6,8 +6,8 @@ var userSchema = new Schema({
   email : String,
   skills : Array,
   experience: String
-})
+});
 
 var User = mongoose.model('User', userSchema);
 
-module.exports = User
+module.exports = User;

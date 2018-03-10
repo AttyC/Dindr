@@ -5,80 +5,78 @@ class UserNewForm extends React.Component {
   constructor(props) {
     super(props);
 
-   this.state = {
+    this.state = {
       username: '',
       email: '',
       skills: '',
       experience: ''
-    }
+    };
 
-   this.usernameChange = this.usernameChange.bind(this);
-   this.emailChange = this.emailChange.bind(this);
-   this.skillChange = this.skillChange.bind(this);
-   this.experienceChange = this.experienceChange.bind(this);
-   this.handleSubmit = this.handleSubmit.bind(this);
-
+    this.usernameChange = this.usernameChange.bind(this);
+    this.emailChange = this.emailChange.bind(this);
+    this.skillChange = this.skillChange.bind(this);
+    this.experienceChange = this.experienceChange.bind(this);
   }
 //
- usernameChange(e) {
+  usernameChange(e) {
     this.setState({
       username: e.target.value
-    })
+    });
   }
 
   emailChange(e) {
-     this.setState({
-       email: e.target.value
-     })
-   }
+    this.setState({
+      email: e.target.value
+    });
+  }
 
-   skillChange(e) {
-      this.setState({
-        skills: e.target.value
-      })
-    }
+  skillChange(e) {
+    this.setState({
+      skills: e.target.value
+    });
+  }
 
-    experienceChange(e) {
-       this.setState({
-         experience: e.target.value
-       })
-     }
+  experienceChange(e) {
+    this.setState({
+      experience: e.target.value
+    });
+  }
 
-  handleSubmit(e) {
-    alert('skjfsdjf' + this.state.email)
-    e.preventDefault();
-    let username = this.state.username.trim();
-    let email = this.state.email.trim()
-    let skills = this.state.skills.trim()
-    let experience = this.state.experience.trim()
-    if (!username || !email || !skills || !experience) {
-    return;
-    }
-    axios.post('http://localhost:4444/api/users/new', {
-      username: username,
-      email: email,
-      skills: skills,
-      experience: experience
+  addToUsers = event => {
+    event.preventDefault();
+
+    this.setState({
+      email: event.target.value,
+      username: event.target.value,
+      skills: event.target.value,
+      experience: event.target.value
+    });
+
+    axios.post('/api/users/new', {
+      username: this.state.username,
+      email: this.state.email,
+      skills: this.state.skills,
+      experience: this.state.experience
     })
     .then(response => {
-     console.log(response, 'User added');
-   })
+      console.log(response, 'User added');
+    })
    .catch(err => {
      console.log(err, 'User not added, try again');
    });
 
-   this.setState({
-     username: '',
-     email: '',
-     skills: '',
-     experience: ''
-   })
-  }
+    this.setState({
+      username: '',
+      email: '',
+      skills: '',
+      experience: ''
+    });
+  };
 
- render() {
+  render() {
     return (
       <div>
-      <form onSubmit = {this.handleSubmit}>
+      <form onSubmit = {this.addToUsers}>
       <label>
       Username:
       <input type='text' onChange={this.usernameChange} value={this.state.username} /></label>
@@ -93,9 +91,8 @@ class UserNewForm extends React.Component {
       <input type='text' onChange={this.experienceChange} value={this.state.experience} /></label>
       <input type="submit" value ="Submit" />
       </form>
-      console.log(this.state)
       </div>
-    )
+    );
   }
 }
 
