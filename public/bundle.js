@@ -28071,7 +28071,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _LikeUserForm = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./LikeUserForm\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _LikeUserForm = __webpack_require__(/*! ./LikeUserForm */ 252);
 	
 	var _LikeUserForm2 = _interopRequireDefault(_LikeUserForm);
 	
@@ -28102,7 +28102,149 @@
 	exports.default = UserProfile;
 
 /***/ }),
-/* 252 */,
+/* 252 */
+/*!****************************************!*\
+  !*** ./src/components/LikeUserForm.js ***!
+  \****************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _axios = __webpack_require__(/*! axios */ 185);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var LikeUserForm = function (_React$Component) {
+	  _inherits(LikeUserForm, _React$Component);
+	
+	  function LikeUserForm(props) {
+	    _classCallCheck(this, LikeUserForm);
+	
+	    var _this = _possibleConstructorReturn(this, (LikeUserForm.__proto__ || Object.getPrototypeOf(LikeUserForm)).call(this, props));
+	
+	    _this.handleSubmit = function (e) {
+	      e.preventDefault();
+	      var user_id = _this.state.usernameOfLiked_id.trim();
+	      var name = _this.state.nameOfLiker.trim();
+	      var email = _this.state.emailOfLiker.trim();
+	      var location = _this.state.locationOfLiker.trim();
+	      var message = _this.state.message.trim();
+	
+	      if (!user_id || !name || !email || !location || !message) {
+	        return;
+	      }
+	      _axios2.default.post(_this.state.url, {
+	        nameOfLiker: name,
+	        emailOfLiker: email,
+	        locationOfLiker: location,
+	        message: message
+	      }).then(function (response) {
+	        console.log(response, 'Like added');
+	      }).catch(function (err) {
+	        console.log(err, 'Like not added, try again');
+	      });
+	      _this.setState({
+	        nameOfLiker: '',
+	        emailOfLiker: '',
+	        locationOfLiker: '',
+	        message: ''
+	      });
+	    };
+	
+	    var username = _this.props.listNameFromUser;
+	    _this.state = {
+	      usernameOfLiked_id: username,
+	      nameOfLiker: '',
+	      emailOfLiker: '',
+	      locationOfLiker: '',
+	      message: '',
+	      url: 'api/users/' + username + '/likes'
+	    };
+	    _this.handleNameChange = _this.handleNameChange.bind(_this);
+	    _this.handleEmailChange = _this.handleEmailChange.bind(_this);
+	    _this.handleLocationChange = _this.handleLocationChange.bind(_this);
+	    _this.handleMessageChange = _this.handleMessageChange.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(LikeUserForm, [{
+	    key: 'handleNameChange',
+	    value: function handleNameChange(e) {
+	      this.setState({ nameOfLiker: e.target.value });
+	    }
+	  }, {
+	    key: 'handleEmailChange',
+	    value: function handleEmailChange(e) {
+	      this.setState({ emailOfLiker: e.target.value });
+	    }
+	  }, {
+	    key: 'handleLocationChange',
+	    value: function handleLocationChange(e) {
+	      this.setState({ locationOfLiker: e.target.value });
+	    }
+	  }, {
+	    key: 'handleMessageChange',
+	    value: function handleMessageChange(e) {
+	      this.setState({ message: e.target.value });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'form',
+	        { onSubmit: this.handleSubmit },
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          placeholder: 'Your name...',
+	          value: this.state.nameOfLiker,
+	          onChange: this.handleNameChange }),
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          placeholder: 'Your email...',
+	          value: this.state.emailOfLiker,
+	          onChange: this.handleEmailChange }),
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          placeholder: 'Your location...',
+	          value: this.state.locationOfLiker,
+	          onChange: this.handleLocationChange }),
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          placeholder: 'Your message...',
+	          value: this.state.message,
+	          onChange: this.handleMessageChange }),
+	        _react2.default.createElement('p', null),
+	        _react2.default.createElement('input', {
+	          type: 'submit',
+	          value: 'Send Details!' })
+	      );
+	    }
+	  }]);
+	
+	  return LikeUserForm;
+	}(_react2.default.Component);
+	
+	exports.default = LikeUserForm;
+
+/***/ }),
 /* 253 */
 /*!***************************************!*\
   !*** ./src/components/UserNewForm.js ***!

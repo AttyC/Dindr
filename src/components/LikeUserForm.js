@@ -4,13 +4,14 @@ import axios from 'axios';
 class LikeUserForm extends React.Component {
   constructor(props) {
     super(props);
+    const username  = this.props.listNameFromUser;
     this.state = {
-      const username  = this.props.listNameFromUser;
       usernameOfLiked_id: username,
       nameOfLiker: '',
       emailOfLiker:'',
       locationOfLiker:'',
       message: '',
+      url: `api/users/${username}/likes`
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -30,12 +31,37 @@ class LikeUserForm extends React.Component {
   handleMessageChange(e){
     this.setState({message: e.target.value});
   }
-  handleSubmit(e){
+  handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Like added')
-    // need to tie this into post method
-    // need to work out how to add current user username to form
+    let user_id = this.state.usernameOfLiked_id.trim();
+    let name = this.state.nameOfLiker.trim();
+    let email = this.state.emailOfLiker.trim();
+    let location = this.state.locationOfLiker.trim();
+    let message = this.state.message.trim();
+
+    if (!user_id || !name || !email || !location || !message) {
+      return;
+    }
+    axios.post(this.state.url, {
+      nameOfLiker: name,
+      emailOfLiker: email,
+      locationOfLiker: location,
+      message: message
+    })
+    .then(response => {
+      console.log(response, 'Like added');
+    })
+   .catch(err => {
+     console.log(err, 'Like not added, try again');
+   });
+    this.setState({
+      nameOfLiker: '',
+      emailOfLiker:'',
+      locationOfLiker:'',
+      message: '',
+    });
   }
+
   render(){
     return (
       <form onSubmit={this.handleSubmit}>
@@ -64,7 +90,7 @@ class LikeUserForm extends React.Component {
       type='submit'
       value='Send Details!' />
       </form>
-    )
+    );
   }
   }
 
