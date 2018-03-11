@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import UserProfile from './UserProfile';
 
+
 const UserPreview = (user) => {
   return(
     <div className="UserPreview">

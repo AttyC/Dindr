@@ -22377,11 +22377,11 @@
 	
 	var _UserPreview2 = _interopRequireDefault(_UserPreview);
 	
-	var _UserProfile = __webpack_require__(/*! ./UserProfile */ 211);
+	var _UserProfile = __webpack_require__(/*! ./UserProfile */ 251);
 	
 	var _UserProfile2 = _interopRequireDefault(_UserProfile);
 	
-	var _UserNewForm = __webpack_require__(/*! ./UserNewForm */ 212);
+	var _UserNewForm = __webpack_require__(/*! ./UserNewForm */ 252);
 	
 	var _UserNewForm2 = _interopRequireDefault(_UserNewForm);
 	
@@ -22440,22 +22440,23 @@
 	          'Users'
 	        ),
 	        _react2.default.createElement(
-	          'ul',
+	          'h3',
 	          null,
+	          'Add new User:'
+	        ),
+	        _react2.default.createElement(_UserNewForm2.default, null),
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'usersList' },
 	          this.state.users.map(function (user) {
 	            return _react2.default.createElement(
-	              'div',
+	              'li',
 	              { key: user._id },
 	              ' ',
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(_UserPreview2.default, user)
-	              )
+	              _react2.default.createElement(_UserPreview2.default, user)
 	            );
 	          })
-	        ),
-	        _react2.default.createElement(_UserNewForm2.default, null)
+	        )
 	      );
 	    }
 	  }]);
@@ -23983,9 +23984,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouterDom = __webpack_require__(/*! react-router-dom */ 213);
+	var _reactRouterDom = __webpack_require__(/*! react-router-dom */ 211);
 	
-	var _UserProfile = __webpack_require__(/*! ./UserProfile */ 211);
+	var _UserProfile = __webpack_require__(/*! ./UserProfile */ 251);
 	
 	var _UserProfile2 = _interopRequireDefault(_UserProfile);
 	
@@ -23999,8 +24000,12 @@
 	      'div',
 	      { className: 'name' },
 	      ' ',
-	      user.username,
-	      ' '
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        user.username,
+	        ' '
+	      )
 	    ),
 	    _react2.default.createElement(
 	      'div',
@@ -24025,8 +24030,7 @@
 	            return _react2.default.createElement(_UserProfile2.default, user);
 	          } })
 	      )
-	    ),
-	    _react2.default.createElement('hr', null)
+	    )
 	  );
 	};
 	
@@ -24034,204 +24038,6 @@
 
 /***/ }),
 /* 211 */
-/*!***************************************!*\
-  !*** ./src/components/UserProfile.js ***!
-  \***************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var UserProfile = function UserProfile(user) {
-	  return _react2.default.createElement(
-	    "div",
-	    null,
-	    _react2.default.createElement(
-	      "div",
-	      { className: "experience" },
-	      " Experience: ",
-	      user.experience,
-	      " "
-	    ),
-	    _react2.default.createElement(
-	      "div",
-	      { className: "bio" },
-	      " Read ",
-	      user.username,
-	      " bio "
-	    )
-	  );
-	};
-	
-	exports.default = UserProfile;
-
-/***/ }),
-/* 212 */
-/*!***************************************!*\
-  !*** ./src/components/UserNewForm.js ***!
-  \***************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _axios = __webpack_require__(/*! axios */ 185);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var UserNewForm = function (_React$Component) {
-	  _inherits(UserNewForm, _React$Component);
-	
-	  function UserNewForm(props) {
-	    _classCallCheck(this, UserNewForm);
-	
-	    var _this = _possibleConstructorReturn(this, (UserNewForm.__proto__ || Object.getPrototypeOf(UserNewForm)).call(this, props));
-	
-	    _this.addToUsers = function (event) {
-	      event.preventDefault();
-	
-	      _this.setState({
-	        email: event.target.value,
-	        username: event.target.value,
-	        skills: event.target.value,
-	        experience: event.target.value
-	      });
-	
-	      _axios2.default.post('/api/users/new', {
-	        username: _this.state.username,
-	        email: _this.state.email,
-	        skills: _this.state.skills,
-	        experience: _this.state.experience
-	      }).then(function (response) {
-	        console.log(response, 'User added');
-	      }).catch(function (err) {
-	        console.log(err, 'User not added, try again');
-	      });
-	
-	      _this.setState({
-	        username: '',
-	        email: '',
-	        skills: '',
-	        experience: ''
-	      });
-	    };
-	
-	    _this.state = {
-	      username: '',
-	      email: '',
-	      skills: '',
-	      experience: ''
-	    };
-	
-	    _this.usernameChange = _this.usernameChange.bind(_this);
-	    _this.emailChange = _this.emailChange.bind(_this);
-	    _this.skillChange = _this.skillChange.bind(_this);
-	    _this.experienceChange = _this.experienceChange.bind(_this);
-	    return _this;
-	  }
-	  //
-	
-	
-	  _createClass(UserNewForm, [{
-	    key: 'usernameChange',
-	    value: function usernameChange(e) {
-	      this.setState({
-	        username: e.target.value
-	      });
-	    }
-	  }, {
-	    key: 'emailChange',
-	    value: function emailChange(e) {
-	      this.setState({
-	        email: e.target.value
-	      });
-	    }
-	  }, {
-	    key: 'skillChange',
-	    value: function skillChange(e) {
-	      this.setState({
-	        skills: e.target.value
-	      });
-	    }
-	  }, {
-	    key: 'experienceChange',
-	    value: function experienceChange(e) {
-	      this.setState({
-	        experience: e.target.value
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'form',
-	          { onSubmit: this.addToUsers },
-	          _react2.default.createElement(
-	            'label',
-	            null,
-	            'Username:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.usernameChange, value: this.state.username })
-	          ),
-	          _react2.default.createElement(
-	            'label',
-	            null,
-	            'Email:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.emailChange, value: this.state.email })
-	          ),
-	          _react2.default.createElement(
-	            'label',
-	            null,
-	            'Skills:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.skillChange, value: this.state.skills })
-	          ),
-	          _react2.default.createElement(
-	            'label',
-	            null,
-	            'Experience:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.experienceChange, value: this.state.experience })
-	          ),
-	          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return UserNewForm;
-	}(_react2.default.Component);
-	
-	exports.default = UserNewForm;
-
-/***/ }),
-/* 213 */
 /*!*************************************!*\
   !*** ./~/react-router-dom/index.js ***!
   \*************************************/
@@ -24242,55 +24048,55 @@
 	exports.__esModule = true;
 	exports.withRouter = exports.matchPath = exports.Switch = exports.StaticRouter = exports.Router = exports.Route = exports.Redirect = exports.Prompt = exports.NavLink = exports.MemoryRouter = exports.Link = exports.HashRouter = exports.BrowserRouter = undefined;
 	
-	var _BrowserRouter2 = __webpack_require__(/*! ./BrowserRouter */ 214);
+	var _BrowserRouter2 = __webpack_require__(/*! ./BrowserRouter */ 212);
 	
 	var _BrowserRouter3 = _interopRequireDefault(_BrowserRouter2);
 	
-	var _HashRouter2 = __webpack_require__(/*! ./HashRouter */ 228);
+	var _HashRouter2 = __webpack_require__(/*! ./HashRouter */ 226);
 	
 	var _HashRouter3 = _interopRequireDefault(_HashRouter2);
 	
-	var _Link2 = __webpack_require__(/*! ./Link */ 230);
+	var _Link2 = __webpack_require__(/*! ./Link */ 228);
 	
 	var _Link3 = _interopRequireDefault(_Link2);
 	
-	var _MemoryRouter2 = __webpack_require__(/*! ./MemoryRouter */ 231);
+	var _MemoryRouter2 = __webpack_require__(/*! ./MemoryRouter */ 229);
 	
 	var _MemoryRouter3 = _interopRequireDefault(_MemoryRouter2);
 	
-	var _NavLink2 = __webpack_require__(/*! ./NavLink */ 234);
+	var _NavLink2 = __webpack_require__(/*! ./NavLink */ 232);
 	
 	var _NavLink3 = _interopRequireDefault(_NavLink2);
 	
-	var _Prompt2 = __webpack_require__(/*! ./Prompt */ 240);
+	var _Prompt2 = __webpack_require__(/*! ./Prompt */ 238);
 	
 	var _Prompt3 = _interopRequireDefault(_Prompt2);
 	
-	var _Redirect2 = __webpack_require__(/*! ./Redirect */ 242);
+	var _Redirect2 = __webpack_require__(/*! ./Redirect */ 240);
 	
 	var _Redirect3 = _interopRequireDefault(_Redirect2);
 	
-	var _Route2 = __webpack_require__(/*! ./Route */ 235);
+	var _Route2 = __webpack_require__(/*! ./Route */ 233);
 	
 	var _Route3 = _interopRequireDefault(_Route2);
 	
-	var _Router2 = __webpack_require__(/*! ./Router */ 226);
+	var _Router2 = __webpack_require__(/*! ./Router */ 224);
 	
 	var _Router3 = _interopRequireDefault(_Router2);
 	
-	var _StaticRouter2 = __webpack_require__(/*! ./StaticRouter */ 245);
+	var _StaticRouter2 = __webpack_require__(/*! ./StaticRouter */ 243);
 	
 	var _StaticRouter3 = _interopRequireDefault(_StaticRouter2);
 	
-	var _Switch2 = __webpack_require__(/*! ./Switch */ 247);
+	var _Switch2 = __webpack_require__(/*! ./Switch */ 245);
 	
 	var _Switch3 = _interopRequireDefault(_Switch2);
 	
-	var _matchPath2 = __webpack_require__(/*! ./matchPath */ 249);
+	var _matchPath2 = __webpack_require__(/*! ./matchPath */ 247);
 	
 	var _matchPath3 = _interopRequireDefault(_matchPath2);
 	
-	var _withRouter2 = __webpack_require__(/*! ./withRouter */ 250);
+	var _withRouter2 = __webpack_require__(/*! ./withRouter */ 248);
 	
 	var _withRouter3 = _interopRequireDefault(_withRouter2);
 	
@@ -24313,7 +24119,7 @@
 	exports.withRouter = _withRouter3.default;
 
 /***/ }),
-/* 214 */
+/* 212 */
 /*!*********************************************!*\
   !*** ./~/react-router-dom/BrowserRouter.js ***!
   \*********************************************/
@@ -24325,7 +24131,7 @@
 	
 	exports.__esModule = true;
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -24333,15 +24139,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _createBrowserHistory = __webpack_require__(/*! history/createBrowserHistory */ 218);
+	var _createBrowserHistory = __webpack_require__(/*! history/createBrowserHistory */ 216);
 	
 	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
 	
-	var _Router = __webpack_require__(/*! ./Router */ 226);
+	var _Router = __webpack_require__(/*! ./Router */ 224);
 	
 	var _Router2 = _interopRequireDefault(_Router);
 	
@@ -24406,7 +24212,7 @@
 	exports.default = BrowserRouter;
 
 /***/ }),
-/* 215 */
+/* 213 */
 /*!******************************!*\
   !*** ./~/warning/browser.js ***!
   \******************************/
@@ -24468,7 +24274,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 3)))
 
 /***/ }),
-/* 216 */
+/* 214 */
 /*!*******************************!*\
   !*** ./~/prop-types/index.js ***!
   \*******************************/
@@ -24499,12 +24305,12 @@
 	} else {
 	  // By explicitly using `prop-types` you are opting into new production behavior.
 	  // http://fb.me/prop-types-in-prod
-	  module.exports = __webpack_require__(/*! ./factoryWithThrowingShims */ 217)();
+	  module.exports = __webpack_require__(/*! ./factoryWithThrowingShims */ 215)();
 	}
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 3)))
 
 /***/ }),
-/* 217 */
+/* 215 */
 /*!**************************************************!*\
   !*** ./~/prop-types/factoryWithThrowingShims.js ***!
   \**************************************************/
@@ -24565,7 +24371,7 @@
 	};
 
 /***/ }),
-/* 218 */
+/* 216 */
 /*!*******************************************!*\
   !*** ./~/history/createBrowserHistory.js ***!
   \*******************************************/
@@ -24593,23 +24399,23 @@
 	  }return target;
 	};
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _invariant = __webpack_require__(/*! invariant */ 219);
+	var _invariant = __webpack_require__(/*! invariant */ 217);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
-	var _LocationUtils = __webpack_require__(/*! ./LocationUtils */ 220);
+	var _LocationUtils = __webpack_require__(/*! ./LocationUtils */ 218);
 	
-	var _PathUtils = __webpack_require__(/*! ./PathUtils */ 223);
+	var _PathUtils = __webpack_require__(/*! ./PathUtils */ 221);
 	
-	var _createTransitionManager = __webpack_require__(/*! ./createTransitionManager */ 224);
+	var _createTransitionManager = __webpack_require__(/*! ./createTransitionManager */ 222);
 	
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 	
-	var _DOMUtils = __webpack_require__(/*! ./DOMUtils */ 225);
+	var _DOMUtils = __webpack_require__(/*! ./DOMUtils */ 223);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -24893,7 +24699,7 @@
 	exports.default = createBrowserHistory;
 
 /***/ }),
-/* 219 */
+/* 217 */
 /*!********************************!*\
   !*** ./~/invariant/browser.js ***!
   \********************************/
@@ -24948,7 +24754,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 3)))
 
 /***/ }),
-/* 220 */
+/* 218 */
 /*!************************************!*\
   !*** ./~/history/LocationUtils.js ***!
   \************************************/
@@ -24969,15 +24775,15 @@
 	  }return target;
 	};
 	
-	var _resolvePathname = __webpack_require__(/*! resolve-pathname */ 221);
+	var _resolvePathname = __webpack_require__(/*! resolve-pathname */ 219);
 	
 	var _resolvePathname2 = _interopRequireDefault(_resolvePathname);
 	
-	var _valueEqual = __webpack_require__(/*! value-equal */ 222);
+	var _valueEqual = __webpack_require__(/*! value-equal */ 220);
 	
 	var _valueEqual2 = _interopRequireDefault(_valueEqual);
 	
-	var _PathUtils = __webpack_require__(/*! ./PathUtils */ 223);
+	var _PathUtils = __webpack_require__(/*! ./PathUtils */ 221);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -25044,7 +24850,7 @@
 	};
 
 /***/ }),
-/* 221 */
+/* 219 */
 /*!*****************************************!*\
   !*** ./~/resolve-pathname/cjs/index.js ***!
   \*****************************************/
@@ -25126,7 +24932,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 222 */
+/* 220 */
 /*!************************************!*\
   !*** ./~/value-equal/cjs/index.js ***!
   \************************************/
@@ -25183,7 +24989,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 223 */
+/* 221 */
 /*!********************************!*\
   !*** ./~/history/PathUtils.js ***!
   \********************************/
@@ -25251,7 +25057,7 @@
 	};
 
 /***/ }),
-/* 224 */
+/* 222 */
 /*!**********************************************!*\
   !*** ./~/history/createTransitionManager.js ***!
   \**********************************************/
@@ -25261,7 +25067,7 @@
 	
 	exports.__esModule = true;
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -25346,7 +25152,7 @@
 	exports.default = createTransitionManager;
 
 /***/ }),
-/* 225 */
+/* 223 */
 /*!*******************************!*\
   !*** ./~/history/DOMUtils.js ***!
   \*******************************/
@@ -25409,7 +25215,7 @@
 	};
 
 /***/ }),
-/* 226 */
+/* 224 */
 /*!**************************************!*\
   !*** ./~/react-router-dom/Router.js ***!
   \**************************************/
@@ -25419,7 +25225,7 @@
 	
 	exports.__esModule = true;
 	
-	var _Router = __webpack_require__(/*! react-router/Router */ 227);
+	var _Router = __webpack_require__(/*! react-router/Router */ 225);
 	
 	var _Router2 = _interopRequireDefault(_Router);
 	
@@ -25430,7 +25236,7 @@
 	exports.default = _Router2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 227 */
+/* 225 */
 /*!**********************************!*\
   !*** ./~/react-router/Router.js ***!
   \**********************************/
@@ -25452,11 +25258,11 @@
 	  }return target;
 	};
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _invariant = __webpack_require__(/*! invariant */ 219);
+	var _invariant = __webpack_require__(/*! invariant */ 217);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -25464,7 +25270,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
@@ -25580,7 +25386,7 @@
 	exports.default = Router;
 
 /***/ }),
-/* 228 */
+/* 226 */
 /*!******************************************!*\
   !*** ./~/react-router-dom/HashRouter.js ***!
   \******************************************/
@@ -25592,7 +25398,7 @@
 	
 	exports.__esModule = true;
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -25600,15 +25406,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _createHashHistory = __webpack_require__(/*! history/createHashHistory */ 229);
+	var _createHashHistory = __webpack_require__(/*! history/createHashHistory */ 227);
 	
 	var _createHashHistory2 = _interopRequireDefault(_createHashHistory);
 	
-	var _Router = __webpack_require__(/*! ./Router */ 226);
+	var _Router = __webpack_require__(/*! ./Router */ 224);
 	
 	var _Router2 = _interopRequireDefault(_Router);
 	
@@ -25672,7 +25478,7 @@
 	exports.default = HashRouter;
 
 /***/ }),
-/* 229 */
+/* 227 */
 /*!****************************************!*\
   !*** ./~/history/createHashHistory.js ***!
   \****************************************/
@@ -25692,23 +25498,23 @@
 	  }return target;
 	};
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _invariant = __webpack_require__(/*! invariant */ 219);
+	var _invariant = __webpack_require__(/*! invariant */ 217);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
-	var _LocationUtils = __webpack_require__(/*! ./LocationUtils */ 220);
+	var _LocationUtils = __webpack_require__(/*! ./LocationUtils */ 218);
 	
-	var _PathUtils = __webpack_require__(/*! ./PathUtils */ 223);
+	var _PathUtils = __webpack_require__(/*! ./PathUtils */ 221);
 	
-	var _createTransitionManager = __webpack_require__(/*! ./createTransitionManager */ 224);
+	var _createTransitionManager = __webpack_require__(/*! ./createTransitionManager */ 222);
 	
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 	
-	var _DOMUtils = __webpack_require__(/*! ./DOMUtils */ 225);
+	var _DOMUtils = __webpack_require__(/*! ./DOMUtils */ 223);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -26013,7 +25819,7 @@
 	exports.default = createHashHistory;
 
 /***/ }),
-/* 230 */
+/* 228 */
 /*!************************************!*\
   !*** ./~/react-router-dom/Link.js ***!
   \************************************/
@@ -26039,11 +25845,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _invariant = __webpack_require__(/*! invariant */ 219);
+	var _invariant = __webpack_require__(/*! invariant */ 217);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -26158,7 +25964,7 @@
 	exports.default = Link;
 
 /***/ }),
-/* 231 */
+/* 229 */
 /*!********************************************!*\
   !*** ./~/react-router-dom/MemoryRouter.js ***!
   \********************************************/
@@ -26168,7 +25974,7 @@
 	
 	exports.__esModule = true;
 	
-	var _MemoryRouter = __webpack_require__(/*! react-router/MemoryRouter */ 232);
+	var _MemoryRouter = __webpack_require__(/*! react-router/MemoryRouter */ 230);
 	
 	var _MemoryRouter2 = _interopRequireDefault(_MemoryRouter);
 	
@@ -26179,7 +25985,7 @@
 	exports.default = _MemoryRouter2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 232 */
+/* 230 */
 /*!****************************************!*\
   !*** ./~/react-router/MemoryRouter.js ***!
   \****************************************/
@@ -26191,7 +25997,7 @@
 	
 	exports.__esModule = true;
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -26199,15 +26005,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _createMemoryHistory = __webpack_require__(/*! history/createMemoryHistory */ 233);
+	var _createMemoryHistory = __webpack_require__(/*! history/createMemoryHistory */ 231);
 	
 	var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
 	
-	var _Router = __webpack_require__(/*! ./Router */ 227);
+	var _Router = __webpack_require__(/*! ./Router */ 225);
 	
 	var _Router2 = _interopRequireDefault(_Router);
 	
@@ -26272,7 +26078,7 @@
 	exports.default = MemoryRouter;
 
 /***/ }),
-/* 233 */
+/* 231 */
 /*!******************************************!*\
   !*** ./~/history/createMemoryHistory.js ***!
   \******************************************/
@@ -26300,15 +26106,15 @@
 	  }return target;
 	};
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _PathUtils = __webpack_require__(/*! ./PathUtils */ 223);
+	var _PathUtils = __webpack_require__(/*! ./PathUtils */ 221);
 	
-	var _LocationUtils = __webpack_require__(/*! ./LocationUtils */ 220);
+	var _LocationUtils = __webpack_require__(/*! ./LocationUtils */ 218);
 	
-	var _createTransitionManager = __webpack_require__(/*! ./createTransitionManager */ 224);
+	var _createTransitionManager = __webpack_require__(/*! ./createTransitionManager */ 222);
 	
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 	
@@ -26465,7 +26271,7 @@
 	exports.default = createMemoryHistory;
 
 /***/ }),
-/* 234 */
+/* 232 */
 /*!***************************************!*\
   !*** ./~/react-router-dom/NavLink.js ***!
   \***************************************/
@@ -26497,15 +26303,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _Route = __webpack_require__(/*! ./Route */ 235);
+	var _Route = __webpack_require__(/*! ./Route */ 233);
 	
 	var _Route2 = _interopRequireDefault(_Route);
 	
-	var _Link = __webpack_require__(/*! ./Link */ 230);
+	var _Link = __webpack_require__(/*! ./Link */ 228);
 	
 	var _Link2 = _interopRequireDefault(_Link);
 	
@@ -26579,7 +26385,7 @@
 	exports.default = NavLink;
 
 /***/ }),
-/* 235 */
+/* 233 */
 /*!*************************************!*\
   !*** ./~/react-router-dom/Route.js ***!
   \*************************************/
@@ -26589,7 +26395,7 @@
 	
 	exports.__esModule = true;
 	
-	var _Route = __webpack_require__(/*! react-router/Route */ 236);
+	var _Route = __webpack_require__(/*! react-router/Route */ 234);
 	
 	var _Route2 = _interopRequireDefault(_Route);
 	
@@ -26600,7 +26406,7 @@
 	exports.default = _Route2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 236 */
+/* 234 */
 /*!*********************************!*\
   !*** ./~/react-router/Route.js ***!
   \*********************************/
@@ -26622,11 +26428,11 @@
 	  }return target;
 	};
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _invariant = __webpack_require__(/*! invariant */ 219);
+	var _invariant = __webpack_require__(/*! invariant */ 217);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -26634,11 +26440,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _matchPath = __webpack_require__(/*! ./matchPath */ 237);
+	var _matchPath = __webpack_require__(/*! ./matchPath */ 235);
 	
 	var _matchPath2 = _interopRequireDefault(_matchPath);
 	
@@ -26784,7 +26590,7 @@
 	exports.default = Route;
 
 /***/ }),
-/* 237 */
+/* 235 */
 /*!*************************************!*\
   !*** ./~/react-router/matchPath.js ***!
   \*************************************/
@@ -26794,7 +26600,7 @@
 	
 	exports.__esModule = true;
 	
-	var _pathToRegexp = __webpack_require__(/*! path-to-regexp */ 238);
+	var _pathToRegexp = __webpack_require__(/*! path-to-regexp */ 236);
 	
 	var _pathToRegexp2 = _interopRequireDefault(_pathToRegexp);
 	
@@ -26871,7 +26677,7 @@
 	exports.default = matchPath;
 
 /***/ }),
-/* 238 */
+/* 236 */
 /*!**************************************************!*\
   !*** ./~/react-router/~/path-to-regexp/index.js ***!
   \**************************************************/
@@ -26881,7 +26687,7 @@
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var isarray = __webpack_require__(/*! isarray */ 239);
+	var isarray = __webpack_require__(/*! isarray */ 237);
 	
 	/**
 	 * Expose `pathToRegexp`.
@@ -27308,7 +27114,7 @@
 	}
 
 /***/ }),
-/* 239 */
+/* 237 */
 /*!*******************************************!*\
   !*** ./~/react-router/~/isarray/index.js ***!
   \*******************************************/
@@ -27321,7 +27127,7 @@
 	};
 
 /***/ }),
-/* 240 */
+/* 238 */
 /*!**************************************!*\
   !*** ./~/react-router-dom/Prompt.js ***!
   \**************************************/
@@ -27331,7 +27137,7 @@
 	
 	exports.__esModule = true;
 	
-	var _Prompt = __webpack_require__(/*! react-router/Prompt */ 241);
+	var _Prompt = __webpack_require__(/*! react-router/Prompt */ 239);
 	
 	var _Prompt2 = _interopRequireDefault(_Prompt);
 	
@@ -27342,7 +27148,7 @@
 	exports.default = _Prompt2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 241 */
+/* 239 */
 /*!**********************************!*\
   !*** ./~/react-router/Prompt.js ***!
   \**********************************/
@@ -27358,11 +27164,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _invariant = __webpack_require__(/*! invariant */ 219);
+	var _invariant = __webpack_require__(/*! invariant */ 217);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -27456,7 +27262,7 @@
 	exports.default = Prompt;
 
 /***/ }),
-/* 242 */
+/* 240 */
 /*!****************************************!*\
   !*** ./~/react-router-dom/Redirect.js ***!
   \****************************************/
@@ -27466,7 +27272,7 @@
 	
 	exports.__esModule = true;
 	
-	var _Redirect = __webpack_require__(/*! react-router/Redirect */ 243);
+	var _Redirect = __webpack_require__(/*! react-router/Redirect */ 241);
 	
 	var _Redirect2 = _interopRequireDefault(_Redirect);
 	
@@ -27477,7 +27283,7 @@
 	exports.default = _Redirect2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 243 */
+/* 241 */
 /*!************************************!*\
   !*** ./~/react-router/Redirect.js ***!
   \************************************/
@@ -27493,19 +27299,19 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _invariant = __webpack_require__(/*! invariant */ 219);
+	var _invariant = __webpack_require__(/*! invariant */ 217);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
-	var _history = __webpack_require__(/*! history */ 244);
+	var _history = __webpack_require__(/*! history */ 242);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -27608,7 +27414,7 @@
 	exports.default = Redirect;
 
 /***/ }),
-/* 244 */
+/* 242 */
 /*!****************************!*\
   !*** ./~/history/index.js ***!
   \****************************/
@@ -27619,7 +27425,7 @@
 	exports.__esModule = true;
 	exports.createPath = exports.parsePath = exports.locationsAreEqual = exports.createLocation = exports.createMemoryHistory = exports.createHashHistory = exports.createBrowserHistory = undefined;
 	
-	var _LocationUtils = __webpack_require__(/*! ./LocationUtils */ 220);
+	var _LocationUtils = __webpack_require__(/*! ./LocationUtils */ 218);
 	
 	Object.defineProperty(exports, 'createLocation', {
 	  enumerable: true,
@@ -27634,7 +27440,7 @@
 	  }
 	});
 	
-	var _PathUtils = __webpack_require__(/*! ./PathUtils */ 223);
+	var _PathUtils = __webpack_require__(/*! ./PathUtils */ 221);
 	
 	Object.defineProperty(exports, 'parsePath', {
 	  enumerable: true,
@@ -27649,15 +27455,15 @@
 	  }
 	});
 	
-	var _createBrowserHistory2 = __webpack_require__(/*! ./createBrowserHistory */ 218);
+	var _createBrowserHistory2 = __webpack_require__(/*! ./createBrowserHistory */ 216);
 	
 	var _createBrowserHistory3 = _interopRequireDefault(_createBrowserHistory2);
 	
-	var _createHashHistory2 = __webpack_require__(/*! ./createHashHistory */ 229);
+	var _createHashHistory2 = __webpack_require__(/*! ./createHashHistory */ 227);
 	
 	var _createHashHistory3 = _interopRequireDefault(_createHashHistory2);
 	
-	var _createMemoryHistory2 = __webpack_require__(/*! ./createMemoryHistory */ 233);
+	var _createMemoryHistory2 = __webpack_require__(/*! ./createMemoryHistory */ 231);
 	
 	var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
 	
@@ -27670,7 +27476,7 @@
 	exports.createMemoryHistory = _createMemoryHistory3.default;
 
 /***/ }),
-/* 245 */
+/* 243 */
 /*!********************************************!*\
   !*** ./~/react-router-dom/StaticRouter.js ***!
   \********************************************/
@@ -27680,7 +27486,7 @@
 	
 	exports.__esModule = true;
 	
-	var _StaticRouter = __webpack_require__(/*! react-router/StaticRouter */ 246);
+	var _StaticRouter = __webpack_require__(/*! react-router/StaticRouter */ 244);
 	
 	var _StaticRouter2 = _interopRequireDefault(_StaticRouter);
 	
@@ -27691,7 +27497,7 @@
 	exports.default = _StaticRouter2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 246 */
+/* 244 */
 /*!****************************************!*\
   !*** ./~/react-router/StaticRouter.js ***!
   \****************************************/
@@ -27713,11 +27519,11 @@
 	  }return target;
 	};
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _invariant = __webpack_require__(/*! invariant */ 219);
+	var _invariant = __webpack_require__(/*! invariant */ 217);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -27725,13 +27531,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _PathUtils = __webpack_require__(/*! history/PathUtils */ 223);
+	var _PathUtils = __webpack_require__(/*! history/PathUtils */ 221);
 	
-	var _Router = __webpack_require__(/*! ./Router */ 227);
+	var _Router = __webpack_require__(/*! ./Router */ 225);
 	
 	var _Router2 = _interopRequireDefault(_Router);
 	
@@ -27911,7 +27717,7 @@
 	exports.default = StaticRouter;
 
 /***/ }),
-/* 247 */
+/* 245 */
 /*!**************************************!*\
   !*** ./~/react-router-dom/Switch.js ***!
   \**************************************/
@@ -27921,7 +27727,7 @@
 	
 	exports.__esModule = true;
 	
-	var _Switch = __webpack_require__(/*! react-router/Switch */ 248);
+	var _Switch = __webpack_require__(/*! react-router/Switch */ 246);
 	
 	var _Switch2 = _interopRequireDefault(_Switch);
 	
@@ -27932,7 +27738,7 @@
 	exports.default = _Switch2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 248 */
+/* 246 */
 /*!**********************************!*\
   !*** ./~/react-router/Switch.js ***!
   \**********************************/
@@ -27948,19 +27754,19 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _warning = __webpack_require__(/*! warning */ 215);
+	var _warning = __webpack_require__(/*! warning */ 213);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _invariant = __webpack_require__(/*! invariant */ 219);
+	var _invariant = __webpack_require__(/*! invariant */ 217);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
-	var _matchPath = __webpack_require__(/*! ./matchPath */ 237);
+	var _matchPath = __webpack_require__(/*! ./matchPath */ 235);
 	
 	var _matchPath2 = _interopRequireDefault(_matchPath);
 	
@@ -28052,7 +27858,7 @@
 	exports.default = Switch;
 
 /***/ }),
-/* 249 */
+/* 247 */
 /*!*****************************************!*\
   !*** ./~/react-router-dom/matchPath.js ***!
   \*****************************************/
@@ -28062,7 +27868,7 @@
 	
 	exports.__esModule = true;
 	
-	var _matchPath = __webpack_require__(/*! react-router/matchPath */ 237);
+	var _matchPath = __webpack_require__(/*! react-router/matchPath */ 235);
 	
 	var _matchPath2 = _interopRequireDefault(_matchPath);
 	
@@ -28073,7 +27879,7 @@
 	exports.default = _matchPath2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 250 */
+/* 248 */
 /*!******************************************!*\
   !*** ./~/react-router-dom/withRouter.js ***!
   \******************************************/
@@ -28083,7 +27889,7 @@
 	
 	exports.__esModule = true;
 	
-	var _withRouter = __webpack_require__(/*! react-router/withRouter */ 251);
+	var _withRouter = __webpack_require__(/*! react-router/withRouter */ 249);
 	
 	var _withRouter2 = _interopRequireDefault(_withRouter);
 	
@@ -28094,7 +27900,7 @@
 	exports.default = _withRouter2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 251 */
+/* 249 */
 /*!**************************************!*\
   !*** ./~/react-router/withRouter.js ***!
   \**************************************/
@@ -28118,15 +27924,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 216);
+	var _propTypes = __webpack_require__(/*! prop-types */ 214);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _hoistNonReactStatics = __webpack_require__(/*! hoist-non-react-statics */ 252);
+	var _hoistNonReactStatics = __webpack_require__(/*! hoist-non-react-statics */ 250);
 	
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 	
-	var _Route = __webpack_require__(/*! ./Route */ 236);
+	var _Route = __webpack_require__(/*! ./Route */ 234);
 	
 	var _Route2 = _interopRequireDefault(_Route);
 	
@@ -28165,7 +27971,7 @@
 	exports.default = withRouter;
 
 /***/ }),
-/* 252 */
+/* 250 */
 /*!********************************************!*\
   !*** ./~/hoist-non-react-statics/index.js ***!
   \********************************************/
@@ -28247,6 +28053,329 @@
 	        return targetComponent;
 	    };
 	});
+
+/***/ }),
+/* 251 */
+/*!***************************************!*\
+  !*** ./src/components/UserProfile.js ***!
+  \***************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _LikeUserForm = __webpack_require__(/*! ./LikeUserForm */ 253);
+	
+	var _LikeUserForm2 = _interopRequireDefault(_LikeUserForm);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var UserProfile = function UserProfile(user) {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'experience' },
+	      ' Experience: ',
+	      user.experience,
+	      ' '
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'bio' },
+	      ' Read ',
+	      user.username,
+	      ' bio '
+	    ),
+	    _react2.default.createElement(_LikeUserForm2.default, null)
+	  );
+	};
+	
+	exports.default = UserProfile;
+
+/***/ }),
+/* 252 */
+/*!***************************************!*\
+  !*** ./src/components/UserNewForm.js ***!
+  \***************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _axios = __webpack_require__(/*! axios */ 185);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var UserNewForm = function (_React$Component) {
+	  _inherits(UserNewForm, _React$Component);
+	
+	  function UserNewForm(props) {
+	    _classCallCheck(this, UserNewForm);
+	
+	    var _this = _possibleConstructorReturn(this, (UserNewForm.__proto__ || Object.getPrototypeOf(UserNewForm)).call(this, props));
+	
+	    _this.addToUsers = function (event) {
+	      event.preventDefault();
+	
+	      _this.setState({
+	        email: event.target.value,
+	        username: event.target.value,
+	        skills: event.target.value,
+	        experience: event.target.value
+	      });
+	
+	      _axios2.default.post('/api/users/new', {
+	        username: _this.state.username,
+	        email: _this.state.email,
+	        skills: _this.state.skills,
+	        experience: _this.state.experience
+	      }).then(function (response) {
+	        console.log(response, 'User added');
+	      }).catch(function (err) {
+	        console.log(err, 'User not added, try again');
+	      });
+	
+	      _this.setState({
+	        username: '',
+	        email: '',
+	        skills: '',
+	        experience: ''
+	      });
+	    };
+	
+	    _this.state = {
+	      username: '',
+	      email: '',
+	      skills: '',
+	      experience: ''
+	    };
+	
+	    _this.usernameChange = _this.usernameChange.bind(_this);
+	    _this.emailChange = _this.emailChange.bind(_this);
+	    _this.skillChange = _this.skillChange.bind(_this);
+	    _this.experienceChange = _this.experienceChange.bind(_this);
+	    return _this;
+	  }
+	  //
+	
+	
+	  _createClass(UserNewForm, [{
+	    key: 'usernameChange',
+	    value: function usernameChange(e) {
+	      this.setState({
+	        username: e.target.value
+	      });
+	    }
+	  }, {
+	    key: 'emailChange',
+	    value: function emailChange(e) {
+	      this.setState({
+	        email: e.target.value
+	      });
+	    }
+	  }, {
+	    key: 'skillChange',
+	    value: function skillChange(e) {
+	      this.setState({
+	        skills: e.target.value
+	      });
+	    }
+	  }, {
+	    key: 'experienceChange',
+	    value: function experienceChange(e) {
+	      this.setState({
+	        experience: e.target.value
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'form',
+	          { onSubmit: this.addToUsers },
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Username:',
+	            _react2.default.createElement('input', { type: 'text', onChange: this.usernameChange, value: this.state.username })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Email:',
+	            _react2.default.createElement('input', { type: 'text', onChange: this.emailChange, value: this.state.email })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Skills:',
+	            _react2.default.createElement('input', { type: 'text', onChange: this.skillChange, value: this.state.skills })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Experience:',
+	            _react2.default.createElement('input', { type: 'text', onChange: this.experienceChange, value: this.state.experience })
+	          ),
+	          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return UserNewForm;
+	}(_react2.default.Component);
+	
+	exports.default = UserNewForm;
+
+/***/ }),
+/* 253 */
+/*!****************************************!*\
+  !*** ./src/components/LikeUserForm.js ***!
+  \****************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _axios = __webpack_require__(/*! axios */ 185);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var LikeUserForm = function (_React$Component) {
+	  _inherits(LikeUserForm, _React$Component);
+	
+	  function LikeUserForm(props) {
+	    _classCallCheck(this, LikeUserForm);
+	
+	    var _this = _possibleConstructorReturn(this, (LikeUserForm.__proto__ || Object.getPrototypeOf(LikeUserForm)).call(this, props));
+	
+	    _this.state = {
+	      usernameOfLiked_id: '',
+	      nameOfLiker: '',
+	      emailOfLiker: '',
+	      locationOfLiker: '',
+	      message: ''
+	    };
+	    _this.handleNameChange = _this.handleNameChange.bind(_this);
+	    _this.handleEmailChange = _this.handleEmailChange.bind(_this);
+	    _this.handleLocationChange = _this.handleLocationChange.bind(_this);
+	    _this.handleMessageChange = _this.handleMessageChange.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(LikeUserForm, [{
+	    key: 'handleNameChange',
+	    value: function handleNameChange(e) {
+	      this.setState({ nameOfLiker: e.target.value });
+	    }
+	  }, {
+	    key: 'handleEmailChange',
+	    value: function handleEmailChange(e) {
+	      this.setState({ emailOfLiker: e.target.value });
+	    }
+	  }, {
+	    key: 'handleLocationChange',
+	    value: function handleLocationChange(e) {
+	      this.setState({ locationOfLiker: e.target.value });
+	    }
+	  }, {
+	    key: 'handleMessageChange',
+	    value: function handleMessageChange(e) {
+	      this.setState({ message: e.target.value });
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	      console.log('Like added');
+	      // need to tie this into post method
+	      // need to work out how to add current user username to form
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'form',
+	        { onSubmit: this.handleSubmit },
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          placeholder: 'Your name...',
+	          value: this.state.nameOfLiker,
+	          onChange: this.handleNameChange }),
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          placeholder: 'Your email...',
+	          value: this.state.emailOfLiker,
+	          onChange: this.handleEmailChange }),
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          placeholder: 'Your location...',
+	          value: this.state.locationOfLiker,
+	          onChange: this.handleLocationChange }),
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          placeholder: 'Your message...',
+	          value: this.state.message,
+	          onChange: this.handleMessageChange }),
+	        _react2.default.createElement('p', null),
+	        _react2.default.createElement('input', {
+	          type: 'submit',
+	          value: 'Send Details!' })
+	      );
+	    }
+	  }]);
+	
+	  return LikeUserForm;
+	}(_react2.default.Component);
+	
+	exports.default = LikeUserForm;
 
 /***/ })
 /******/ ]);
