@@ -3,16 +3,16 @@ import LikeUserForm from './LikeUserForm';
 
 class UserProfile extends React.Component {
   constructor () {
-    super()
+    super();
     this.state = {
       isHidden: true
-    }
+    };
   }
 
   toggleHidden () {
     this.setState({
       isHidden: !this.state.isHidden
-    })
+    });
   }
 
   render () {

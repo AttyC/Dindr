@@ -72,10 +72,15 @@ var setMailOptions =  function (like_id) {
         to: `${user[0].email}`, // list of receivers
         subject: 'You have been liked....', // Subject line
         html: `<p>You have been liked today by ${likeInfo.nameOfLiker}</p>
-       <br>${likeInfo.nameOfLiker} asked us to pass on this message: ${likeInfo.message}.
+       <br>${likeInfo.nameOfLiker} asked us to pass on this message:
+       <br>
+       <br>${likeInfo.message}.
+       <br>
        <br>To get in touch you can email ${likeInfo.nameOfLiker} on ${likeInfo.emailOfLiker}.
+       <br>
        <br>Have fun getting your geek on...
-       The Dind'r Team`};
+       <br>
+       <br>The Dind'r Team`};
        // plain text body
       sendEmailNotification(mailOptions);
     });
