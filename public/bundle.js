@@ -24250,7 +24250,7 @@
 	          'Read more about ',
 	          this.props.user.username
 	        ),
-	        !this.state.isHidden && _react2.default.createElement(_UserProfile2.default, { user: true })
+	        !this.state.isHidden && _react2.default.createElement(_UserProfile2.default, { user: this.props.user })
 	      );
 	    }
 	  }]);

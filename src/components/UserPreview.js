@@ -20,7 +20,7 @@ class UserPreview extends React.Component {
       <button onClick={this.toggleHidden.bind(this)} >
       Read more about {this.props.user.username}
       </button>
-      {!this.state.isHidden && <UserProfile user />}
+      {!this.state.isHidden && <UserProfile user={this.props.user} />}
       </div>
 
     );
