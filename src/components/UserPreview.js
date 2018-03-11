@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import UserProfile from './UserProfile';
 
-
 const UserPreview = (user) => {
   return(
     <div className="UserPreview">
@@ -14,8 +13,8 @@ const UserPreview = (user) => {
         <Route path="/:username" component={() => (<UserProfile {...user} />)} />
       </div>
     </Router>
-  </div>)
+  </div>);
 
-}
+};
 
 export default UserPreview;

@@ -22373,10 +22373,6 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _UserPreview = __webpack_require__(/*! ./UserPreview */ 210);
-	
-	var _UserPreview2 = _interopRequireDefault(_UserPreview);
-	
 	var _UserProfile = __webpack_require__(/*! ./UserProfile */ 251);
 	
 	var _UserProfile2 = _interopRequireDefault(_UserProfile);
@@ -22384,6 +22380,10 @@
 	var _UserNewForm = __webpack_require__(/*! ./UserNewForm */ 253);
 	
 	var _UserNewForm2 = _interopRequireDefault(_UserNewForm);
+	
+	var _UserList = __webpack_require__(/*! ./UserList */ 254);
+	
+	var _UserList2 = _interopRequireDefault(_UserList);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22396,41 +22396,61 @@
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
 	
-	  function App() {
-	    var _ref;
-	
-	    var _temp, _this, _ret;
-	
+	  function App(props) {
 	    _classCallCheck(this, App);
 	
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = { users: []
-	      //this.props.initialMessage
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	    _this.state = { users: [] };
+	    _this.loadUsersFromServer = _this.loadUsersFromServer.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(App, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
+	    key: 'loadUsersFromServer',
+	    value: function loadUsersFromServer() {
 	      var _this2 = this;
 	
-	      // Does stuff when first mounted
 	      _axios2.default.get('/api/users').then(function (res) {
 	        _this2.setState({ users: res.data });
 	      });
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      // Runs when component gets unmounted/replaced
-	      console.log('unmounted');
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.loadUsersFromServer();
+	      // setInterval(this.loadUsersFromServer, this.props.pollInterval);
 	    }
+	
+	    //this.props.initialMessage
+	    // componentDidMount() {
+	    //   // Does stuff when first mounted
+	    //   axios.get('/api/users')
+	    //     .then(res => {
+	    //       this.setState({ users: res.data });
+	    //     });
+	    // }
+	
+	    // componentWillUnmount() {
+	    //   // Runs when component gets unmounted/replaced
+	    //   console.log('unmounted');
+	    // }
+	
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      // return (
+	      //   <div className="App">
+	      //   //   <h1>Users</h1>
+	      //   //   <h3>Add new User:</h3>< UserNewForm />
+	      //   //   <ul className="usersList">
+	      //   //     {this.state.users.map(user =>
+	      //   //      <li key={user._id}> <UserPreview {...user} /></li>
+	      //   //     )}
+	      //   //   </ul>
+	      //   //
+	      //   // </div>
+	      // )
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'App' },
@@ -22445,18 +22465,7 @@
 	          'Add new User:'
 	        ),
 	        _react2.default.createElement(_UserNewForm2.default, null),
-	        _react2.default.createElement(
-	          'ul',
-	          { className: 'usersList' },
-	          this.state.users.map(function (user) {
-	            return _react2.default.createElement(
-	              'li',
-	              { key: user._id },
-	              ' ',
-	              _react2.default.createElement(_UserPreview2.default, user)
-	            );
-	          })
-	        )
+	        _react2.default.createElement(_UserList2.default, { users: this.state.users })
 	      );
 	    }
 	  }]);
@@ -28157,6 +28166,8 @@
 	        locationOfLiker: location,
 	        message: message
 	      }).then(function (response) {
+	        // pop up alert rendered to screen
+	        alert('Like sent to ' + user_id);
 	        console.log(response, 'Like added');
 	      }).catch(function (err) {
 	        console.log(err, 'Like not added, try again');
@@ -28399,6 +28410,69 @@
 	}(_react2.default.Component);
 	
 	exports.default = UserNewForm;
+
+/***/ }),
+/* 254 */
+/*!************************************!*\
+  !*** ./src/components/UserList.js ***!
+  \************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _UserPreview = __webpack_require__(/*! ./UserPreview */ 210);
+	
+	var _UserPreview2 = _interopRequireDefault(_UserPreview);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var UserList = function (_React$Component) {
+	  _inherits(UserList, _React$Component);
+	
+	  function UserList() {
+	    _classCallCheck(this, UserList);
+	
+	    return _possibleConstructorReturn(this, (UserList.__proto__ || Object.getPrototypeOf(UserList)).apply(this, arguments));
+	  }
+	
+	  _createClass(UserList, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'ul',
+	        { className: 'usersList' },
+	        this.props.users.map(function (user) {
+	          return _react2.default.createElement(
+	            'li',
+	            { key: user._id },
+	            ' ',
+	            _react2.default.createElement(_UserPreview2.default, user)
+	          );
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return UserList;
+	}(_react2.default.Component);
+	
+	exports.default = UserList;
 
 /***/ })
 /******/ ]);

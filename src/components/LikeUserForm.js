@@ -49,6 +49,8 @@ class LikeUserForm extends React.Component {
       message: message
     })
     .then(response => {
+      // pop up alert rendered to screen
+      alert(`Like sent to ${user_id}`)
       console.log(response, 'Like added');
     })
    .catch(err => {
