@@ -5,7 +5,8 @@ class LikeUserForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      usernameOfLiked_id: '',
+      const username  = this.props.listNameFromUser;
+      usernameOfLiked_id: username,
       nameOfLiker: '',
       emailOfLiker:'',
       locationOfLiker:'',
@@ -18,6 +19,7 @@ class LikeUserForm extends React.Component {
   }
   handleNameChange(e){
     this.setState({ nameOfLiker: e.target.value});
+
   }
   handleEmailChange(e){
     this.setState({ emailOfLiker: e.target.value});

@@ -6,7 +6,7 @@ const UserProfile = (user) => {
     <div>
       <div className="experience"> Experience: {user.experience} </div>
       <div className="bio"> Read {user.username} bio </div>
-      < LikeUserForm />
+      < LikeUserForm listNameFromUser={user.username} />
     </div>);
 
 };
