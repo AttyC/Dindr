@@ -1,6 +1,17 @@
 const request = require('supertest');
 const server = require('../server');
 
+describe('POST/api/users/skills - find users by skill', () => {
+  let req = {skills: 'Loads'};
+  it('should accept a new valid user', ()=>{
+    return request(server).post('/api/users/skills')
+    .send(req)
+    .then((res) => {
+      expect(res.body[0].username).toBe("Alex")
+    });
+  });
+});
+
 describe('GET/api/users - gets all users', () => {
   let expectedProps = ['_id', 'username', 'email', 'skills', 'experience', '__v'];
   it('should return JSON array', () => {
@@ -24,18 +35,18 @@ describe('GET/api/users - gets all users', () => {
       });
     });
   });
-    it('shouldnt return objs with extra props', ()=>{
-      return request(server)
-      .get('/api/users')
-      .expect(200)
-      .then(res => {
-        // check for only expectedProps
-        let extraProps = Object.keys(res.body[0]).filter((key) => {
-          return !expectedProps.includes(key);
-        });
-        expect(extraProps.length).toBe(0);
+  it('shouldnt return objs with extra props', ()=>{
+    return request(server)
+    .get('/api/users')
+    .expect(200)
+    .then(res => {
+      // check for only expectedProps
+      let extraProps = Object.keys(res.body[0]).filter((key) => {
+        return !expectedProps.includes(key);
       });
+      expect(extraProps.length).toBe(0);
     });
+  });
 });
 
 describe('GET/api/users/:username - get user by username', () => {
