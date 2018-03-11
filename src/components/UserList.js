@@ -3,13 +3,15 @@ import UserPreview from './UserPreview';
 
 class UserList extends React.Component {
   render() {
-  return(
+    return(
+    <div className="Users">
     <ul className="usersList">
       {this.props.users.map(user =>
-      <li key={user._id}> <UserPreview {...user} /></li>
+      <li key={user._id}> <UserPreview user={user} /></li>
       )}
     </ul>
-  );
+    </div>
+    );
   }
 }
 
