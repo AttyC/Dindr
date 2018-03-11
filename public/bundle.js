@@ -24406,7 +24406,7 @@
 	        message: message
 	      }).then(function (response) {
 	        // pop up alert rendered to screen
-	        alert('Like sent to ' + user_id);
+	        alert('Email sent to ' + user_id + ' with your like info. Geek out');
 	        console.log(response, 'Like added');
 	      }).catch(function (err) {
 	        console.log(err, 'Like not added, try again');

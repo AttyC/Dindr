@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 var url = process.env.MONGOLAB_URI;
 
+
 const server = express();
 // need to be added together to allow post request between express and react
 server.use(bodyParser.urlencoded({ extended: true }));
