@@ -4,7 +4,9 @@ const UserProfile = (user) => {
   return(
     <div>
       <div className="experience"> Experience: {user.experience} </div>
-      <div className="bio"> Read {user.username} bio </div>
+      <div className="bio">Bio: {user.username}
+        <p>{user.bio}</p>
+      </div>
     </div>);
 
 };

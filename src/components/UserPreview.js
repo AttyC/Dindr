@@ -6,7 +6,7 @@ const UserPreview = (user) => {
   return(
     <div className="UserPreview">
     <div className="name"> <h2>{user.username} </h2></div>
-    <div className="skills"> {user.skills} </div>
+    <div className="skills">Skills: {user.skills} </div>
     <Router>
       <div>
         <Link to="/:username">Read more about {user.username}</Link>
