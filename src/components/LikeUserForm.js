@@ -90,7 +90,7 @@ class LikeUserForm extends React.Component {
       <p></p>
       <input
       type='submit'
-      value='Send Details!' />
+      value='LIKE!' />
       </form>
     );
   }

@@ -4,7 +4,7 @@ import UserProfile from './UserProfile';
 class UserPreview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isHidden: false};
+    this.state = { isHidden: true};
   }
 
   toggleHidden(){
@@ -20,7 +20,7 @@ class UserPreview extends React.Component {
       <button onClick={this.toggleHidden.bind(this)} >
       Read more about {this.props.user.username}
       </button>
-      {this.state.isHidden && <UserProfile user />}
+      {!this.state.isHidden && <UserProfile user />}
       </div>
 
     );
