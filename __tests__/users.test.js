@@ -119,7 +119,7 @@ describe('GET /api/users', function() {
   });
 });
 
-// tests post route 
+// tests post route
 describe('POST/api/users - create a new user', () => {
   let user = {
     username: "PiggieSmalls",

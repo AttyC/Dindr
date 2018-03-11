@@ -9,6 +9,16 @@ router.get('/users', (req, res)=>{
   });
 });
 
+router.post('/users/skills', (req, res)=>{
+  var regexOrSearchString = new RegExp(req.body.skills.split(" ").join("|"), "i");
+
+  User.find({}).then(user => {
+    res.send(user.filter(function(el) {
+       return (el.skills.join().search(regexOrSearchString) >= 0);
+    }));
+  });
+});
+
 // find user by username within url
 var findUserByUserName = function(req,res){
   var username = req.params.username;
