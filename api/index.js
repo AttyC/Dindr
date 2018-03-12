@@ -21,6 +21,18 @@ router.get('/users', (req, res)=>{
   });
 });
 
+router.post('/users/skills', (req, res)=>{
+  if (typeof req.body.skills != 'undefined') {
+    var regexOrSearchString = new RegExp(req.body.skills.split(" ").join("|"), "i");
+    User.find({})
+    .then(users => {
+      res.send(users.filter(function(user) {
+         return (user.skills.join().search(regexOrSearchString) >= 0);
+      }));
+    });  
+  }
+});
+
 // find user by username within url
 var findUserByUserName = function(req,res){
   var username = req.params.username;

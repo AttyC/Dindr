@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-// import UserProfile from './UserProfile';
 import UserNewForm from './UserNewForm';
+import UserSearchSkillsForm from './UserSearchSkillsForm';
 import UserList from './UserList';
 
 class App extends React.Component {
@@ -18,15 +18,20 @@ class App extends React.Component {
     });
   }
 
+  handleSearchSkills(res){
+    this.setState({ users: res.data });
+  }
+
   componentDidMount(){
     this.loadUsersFromServer();
-    setInterval(this.loadUsersFromServer, this.props.pollInterval);
+    // setInterval(this.loadUsersFromServer, this.props.pollInterval);
   }
 
   render() {
     return (
        <div className="App">
        <h1>Users</h1>
+       < UserSearchSkillsForm searchSkills={this.handleSearchSkills.bind(this)}/>
        <h3>Add new User:</h3>< UserNewForm />
        <UserList users={ this.state.users} />
        </div>
