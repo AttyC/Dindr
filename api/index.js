@@ -56,7 +56,8 @@ router.post('/users/new', function(req, res){
     username: req.body.username,
     email: req.body.email,
     skills: req.body.skills,
-    experience: req.body.experience
+    experience: req.body.experience,
+    bio: req.body.bio
   }).then(user => {
     res.json(user);
   });

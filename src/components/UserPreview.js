@@ -21,7 +21,7 @@ class UserPreview extends React.Component {
       Read more about {this.props.user.username}
       </button>
       {!this.state.isHidden && <UserProfile user={this.props.user} />}
-      </div>
+    </div>
 
     );
   }
