@@ -19,7 +19,7 @@ class UserNewForm extends React.Component {
     this.experienceChange = this.experienceChange.bind(this);
     this.bioChange = this.bioChange.bind(this);
   }
-//
+
   usernameChange(e) {
     this.setState({
       username: e.target.value
