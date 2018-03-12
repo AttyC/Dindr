@@ -24098,7 +24098,10 @@
 	    value: function fileUpload(file) {
 	      var url = '/api/profile';
 	      var formData = new FormData();
+	
 	      formData.append('file', file);
+	      formData.append('username', this.state.username);
+	
 	      var config = {
 	        headers: {
 	          'content-type': 'multipart/ form-data'
@@ -24149,7 +24152,7 @@
 	            'label',
 	            null,
 	            'Add profile pic',
-	            _react2.default.createElement('input', { type: 'file', name: 'file', onChange: this.pictureUploadChange, value: this.state.file })
+	            _react2.default.createElement('input', { type: 'file', name: 'file', onChange: this.pictureUploadChange, value: this.state.files })
 	          ),
 	          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
 	        )

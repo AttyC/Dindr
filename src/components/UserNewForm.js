@@ -61,7 +61,10 @@ class UserNewForm extends React.Component {
   fileUpload(file) {
     const url = '/api/profile';
     const formData = new FormData();
-    formData.append('file', file)
+
+    formData.append('file', file);
+    formData.append('username', this.state.username);
+
       const config = {
         headers: {
           'content-type': 'multipart/ form-data'

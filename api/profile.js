@@ -7,6 +7,7 @@ import GridFsStorage from 'multer-gridfs-storage';
 import Grid from 'gridfs-stream';
 import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
+var User = require('../models/users.js');
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -50,9 +51,19 @@ const upload = multer({ storage }); // passes the storage engine
 // @route POST/upload
 // @desc uploads file to database
 
-router.post('/', upload.single('file'), (req, res) => {   // 'file' refers to form field
-  res.json({file: req.file});
+router.post('/', upload.single('file'), (req, res) => { // 'file' refers to form field
+  User.find({ username: req.body.username }, function(err, user){
+    user = user[0];
+    user.profileUpload = req.file.filename;
+    user.save(function (err){
+      if(err) {
+        console.log('filename not added');
+      }
+    });
+    res.json({file: req.file});
+  });
 });
+
  /// at this point file is now saved to database.
 
  // @route to get all files saved in db

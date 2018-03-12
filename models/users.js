@@ -6,7 +6,8 @@ var userSchema = new Schema({
   email : String,
   skills : Array,
   experience: String,
-  bio: String
+  bio: String,
+  profileUpload: String
 });
 
 var User = mongoose.model('User', userSchema);
