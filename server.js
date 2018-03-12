@@ -19,6 +19,13 @@ server.get('/', (req, res)=>{
     content: 'Hello Partials!!'
   });
 });
+
+server.get('/users', (req, res)=>{
+  res.render('index', {
+    content: 'Hello Partials!!'
+  });
+});
+
 server.use(express.static('public'));
 
 server.use(function(req, res, next) {
