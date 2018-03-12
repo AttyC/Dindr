@@ -47,11 +47,6 @@ const storage = new GridFsStorage({
 });
 const upload = multer({ storage }); // passes the storage engine
 
-// //  GET/profiles
-// router.get('/', (req, res)=>{
-//   res.send('hello');
-// });
-
 // @route POST/upload
 // @desc uploads file to database
 
@@ -72,12 +67,12 @@ router.get('/', (req, res) => {
       });
     }
     // files exist
-    return res.json(files)
+    return res.json(files);
   });
 });
 
 // @route to get single files
-// @desc - gets a single file with filename
+// @desc - gets a single file object with filename
 
 router.get('/:filename', (req, res) => {
   gfs.files.findOne({filename: req.params.filename}, (err, file) =>{ // gets filename from url
@@ -87,33 +82,31 @@ router.get('/:filename', (req, res) => {
       });
     }
     // file exists
-    return res.json(file)
+    return res.json(file);
   });
 });
 
+// @route GET /image/:filename
+// @desc Display image
 
-// var sUpload = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, './api/uploads/');
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.fieldname + '-' + Date.now() + '.jpg');
-//   }
-// });
-// var upload = multer({ storage: storage }).single('profileImage');
-//
-// router.post('/', function (req, res) {
-//   upload(req, res, function (err) {
-//     if (err) {
-//
-//     }
-//     res.json({
-//       success: true,
-//       message: 'image uploaded'
-//     });
-//     // Everything went fine
-//   });
-// });
-//
-//
+router.get('/image/:filename', (req, res) => {
+  gfs.files.findOne({filename: req.params.filename}, (err, file) =>{ // gets filename from url
+    if (!file || file.length === 0){
+      return res.status(404).json({
+        err: 'No file exists'
+      });
+    }
+    // check if image
+    if (file.contentType === 'image/jpeg' || file.contentType === 'img/png') {
+      // Read output to browser
+      const readstream = gfs.createReadStream(file.filename);
+      readstream.pipe(res);
+    } else {
+      res.status(404).json({
+        err: 'Not an image'
+      });
+    }
+  });
+});
+
 export default router;
