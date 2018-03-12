@@ -24017,12 +24017,17 @@
 	        console.log(err, 'User not added, try again');
 	      });
 	
+	      _this.fileUpload(_this.state.file).then(function (response) {
+	        console.log(response.data);
+	      });
+	
 	      _this.setState({
 	        username: '',
 	        email: '',
 	        skills: '',
 	        experience: '',
-	        bio: ''
+	        bio: '',
+	        file: ''
 	      });
 	    };
 	
@@ -24031,7 +24036,8 @@
 	      email: '',
 	      skills: '',
 	      experience: '',
-	      bio: ''
+	      bio: '',
+	      file: ''
 	    };
 	
 	    _this.usernameChange = _this.usernameChange.bind(_this);
@@ -24039,6 +24045,7 @@
 	    _this.skillChange = _this.skillChange.bind(_this);
 	    _this.experienceChange = _this.experienceChange.bind(_this);
 	    _this.bioChange = _this.bioChange.bind(_this);
+	    _this.pictureUploadChange = _this.pictureUploadChange.bind(_this);
 	    return _this;
 	  }
 	  //
@@ -24080,6 +24087,26 @@
 	      });
 	    }
 	  }, {
+	    key: 'pictureUploadChange',
+	    value: function pictureUploadChange(e) {
+	      this.setState({
+	        file: e.target.files[0]
+	      });
+	    }
+	  }, {
+	    key: 'fileUpload',
+	    value: function fileUpload(file) {
+	      var url = '/api/profile';
+	      var formData = new FormData();
+	      formData.append('file', file);
+	      var config = {
+	        headers: {
+	          'content-type': 'multipart/ form-data'
+	        }
+	      };
+	      return _axios2.default.post(url, formData, config);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -24117,6 +24144,12 @@
 	            null,
 	            'Tell us about yourself:',
 	            _react2.default.createElement('input', { type: 'text', onChange: this.bioChange, value: this.state.bio, required: true })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Add profile pic',
+	            _react2.default.createElement('input', { type: 'file', name: 'file', onChange: this.pictureUploadChange, value: this.state.file })
 	          ),
 	          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
 	        )

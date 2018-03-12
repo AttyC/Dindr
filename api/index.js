@@ -13,6 +13,7 @@ var transporter = nodemailer.createTransport({
 
 const router = express.Router();
 var Like = require('../models/likes.js');
+var User = require('../models/users.js');
 
 // find all users
 router.get('/users', (req, res)=>{
@@ -38,7 +39,6 @@ var findUserByUserName = function(req,res){
   var username = req.params.username;
   User.find({ username: username } ).then( user => {
     if (user.length !== 0 ) {
-      console.log(user);
       res.json(user);
     } else {
       res.status(400).json({
