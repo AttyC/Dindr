@@ -47,17 +47,34 @@ const storage = new GridFsStorage({
 });
 const upload = multer({ storage }); // passes the storage engine
 
-//  GET/profiles
-router.get('/', (req, res)=>{
-  res.send('hello');
-});
+// //  GET/profiles
+// router.get('/', (req, res)=>{
+//   res.send('hello');
+// });
+
+// @route POST/upload
+// @desc uploads file to database
 
 router.post('/', upload.single('file'), (req, res) => {   // 'file' refers to form field
   res.json({file: req.file});
 });
+ /// at this point file is now saved to database.
 
-// @route POST/upload
-// @desc uploads file to database
+ // @route to get all files saved in db
+ // @desc Displays files in JSON
+router.get('/', (req, res) => {
+  // first find the files
+  gfs.files.find().toArray((err, files) =>{
+    // Check if files
+    if (!files || files.length === 0){
+      return res.status(404).json({
+        err: 'No files exist'
+      });
+    }
+    // files exist
+    return res.json(files)
+  });
+});
 
 
 // var sUpload = multer.diskStorage({
