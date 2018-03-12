@@ -4,7 +4,7 @@ import App from './components/App';
 import Users from './components/Users';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const BasicExample = () => (
+const Routing = () => (
     <Router>
       <div>
         <ul>
@@ -13,9 +13,6 @@ const BasicExample = () => (
           </li>
           <li>
             <Link to="/users">Users</Link>
-          </li>
-          <li>
-            <Link to="/topics">Topics</Link>
           </li>
         </ul>
   
@@ -29,6 +26,6 @@ const BasicExample = () => (
   
 
 ReactDOM.render(
-      <BasicExample />,
+      <Routing />,
     document.getElementById('root')
 );
