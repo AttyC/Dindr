@@ -12,6 +12,7 @@
     "mongodb": "^2.2.10",
     "mongoose": "^5.0.9",
     "node-sass-middleware": "^0.9.8",
+    "nodemailer": "^4.6.2",
     "qs-set": "0.0.3",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -34,7 +35,7 @@
     "webpack": "^1.13.2"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node server.js --ignore public/ & npm run dev",
+    "start": "nodemon --exec babel-node serverStart.js --ignore public/ & npm run dev",
     "test": "jest --verbose",
     "dev": "webpack -wd"
   },
