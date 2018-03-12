@@ -76,6 +76,21 @@ router.get('/', (req, res) => {
   });
 });
 
+// @route to get single files
+// @desc - gets a single file with filename
+
+router.get('/:filename', (req, res) => {
+  gfs.files.findOne({filename: req.params.filename}, (err, file) =>{ // gets filename from url
+    if (!file || file.length === 0){
+      return res.status(404).json({
+        err: 'No file exists'
+      });
+    }
+    // file exists
+    return res.json(file)
+  });
+});
+
 
 // var sUpload = multer.diskStorage({
 //   destination: function (req, file, cb) {
