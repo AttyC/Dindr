@@ -1,41 +1,40 @@
 import React from 'react';
 import axios from 'axios';
-import UserPreview from './UserPreview';
 import UserNewForm from './UserNewForm';
 import UserSearchSkillsForm from './UserSearchSkillsForm';
+import UserList from './UserList';
 
 class App extends React.Component {
-  state = { users: [] }
-//this.props.initialMessage
-  componentDidMount() {
-    // Does stuff when first mounted
-    axios.get('/api/users')
-      .then(res => {
-        this.setState({ users: res.data });
-      });
+  constructor(props) {
+    super(props);
+    this.state = { users: [] };
+    this.loadUsersFromServer = this.loadUsersFromServer.bind(this);
   }
 
-  componentWillUnmount() {
-    // Runs when component gets unmounted/replaced
-    console.log('unmounted');
+  loadUsersFromServer(){
+    axios.get('/api/users')
+    .then(res => {
+      this.setState({ users: res.data });
+    });
   }
 
   handleSearchSkills(res){
     this.setState({ users: res.data });
   }
 
+  componentDidMount(){
+    this.loadUsersFromServer();
+    // setInterval(this.loadUsersFromServer, this.props.pollInterval);
+  }
+
   render() {
     return (
-      <div className="App">
-        <h1>Users</h1>
-        < UserSearchSkillsForm searchSkills={this.handleSearchSkills.bind(this)}/>
-        <ul>
-          {this.state.users.map(user =>
-           <div key={user._id}> <li><UserPreview {...user} /> </li></div>
-          )}
-        </ul>
-        < UserNewForm />
-      </div>
+       <div className="App">
+       <h1>Users</h1>
+       < UserSearchSkillsForm searchSkills={this.handleSearchSkills.bind(this)}/>
+       <h3>Add new User:</h3>< UserNewForm />
+       <UserList users={ this.state.users} />
+       </div>
     );
   }
 }

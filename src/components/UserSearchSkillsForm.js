@@ -9,7 +9,7 @@ class UserSearchSkillsForm extends React.Component {
     };
     this.skillChange = this.skillChange.bind(this);
   }
-//
+
   skillChange(e) {
     this.setState({
       skills: e.target.value
