@@ -1,5 +1,6 @@
 import express from 'express';
 import nodemailer from'nodemailer';
+
 var emailPassword = process.env.EMAILPASSWORD;
 
 var transporter = nodemailer.createTransport({
@@ -11,7 +12,6 @@ var transporter = nodemailer.createTransport({
 });
 
 const router = express.Router();
-var User = require('../models/users.js');
 var Like = require('../models/likes.js');
 
 // find all users
