@@ -70,6 +70,7 @@ class UserNewForm extends React.Component {
     })
     .then(response => {
       console.log(response, 'User added');
+      this.props.loadUsersFromServer()
     })
    .catch(err => {
      console.log(err, 'User not added, try again');
