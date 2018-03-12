@@ -1,7 +1,7 @@
 import React from 'react';
 import UserPreview from './UserPreview';
-class UserList extends React.Component {
 
+class UserList extends React.Component {
   render() {
     return(
     <div className="Users">
