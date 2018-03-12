@@ -29,7 +29,7 @@ router.post('/users/skills', (req, res)=>{
       res.send(users.filter(function(user) {
          return (user.skills.join().search(regexOrSearchString) >= 0);
       }));
-    });  
+    });
   }
 });
 

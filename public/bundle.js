@@ -24001,14 +24001,16 @@
 	        email: event.target.value,
 	        username: event.target.value,
 	        skills: event.target.value,
-	        experience: event.target.value
+	        experience: event.target.value,
+	        bio: event.target.value
 	      });
 	
 	      _axios2.default.post('/api/users/new', {
 	        username: _this.state.username,
 	        email: _this.state.email,
 	        skills: _this.state.skills,
-	        experience: _this.state.experience
+	        experience: _this.state.experience,
+	        bio: _this.state.bio
 	      }).then(function (response) {
 	        console.log(response, 'User added');
 	      }).catch(function (err) {
@@ -24019,7 +24021,8 @@
 	        username: '',
 	        email: '',
 	        skills: '',
-	        experience: ''
+	        experience: '',
+	        bio: ''
 	      });
 	    };
 	
@@ -24027,13 +24030,15 @@
 	      username: '',
 	      email: '',
 	      skills: '',
-	      experience: ''
+	      experience: '',
+	      bio: ''
 	    };
 	
 	    _this.usernameChange = _this.usernameChange.bind(_this);
 	    _this.emailChange = _this.emailChange.bind(_this);
 	    _this.skillChange = _this.skillChange.bind(_this);
 	    _this.experienceChange = _this.experienceChange.bind(_this);
+	    _this.bioChange = _this.bioChange.bind(_this);
 	    return _this;
 	  }
 	  //
@@ -24068,6 +24073,13 @@
 	      });
 	    }
 	  }, {
+	    key: 'bioChange',
+	    value: function bioChange(e) {
+	      this.setState({
+	        bio: e.target.value
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -24080,25 +24092,31 @@
 	            'label',
 	            null,
 	            'Username:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.usernameChange, value: this.state.username })
+	            _react2.default.createElement('input', { type: 'text', onChange: this.usernameChange, value: this.state.username, required: true })
 	          ),
 	          _react2.default.createElement(
 	            'label',
 	            null,
 	            'Email:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.emailChange, value: this.state.email })
+	            _react2.default.createElement('input', { type: 'text', onChange: this.emailChange, value: this.state.email, required: true })
 	          ),
 	          _react2.default.createElement(
 	            'label',
 	            null,
 	            'Skills:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.skillChange, value: this.state.skills })
+	            _react2.default.createElement('input', { type: 'text', onChange: this.skillChange, value: this.state.skills, required: true })
 	          ),
 	          _react2.default.createElement(
 	            'label',
 	            null,
 	            'Experience:',
-	            _react2.default.createElement('input', { type: 'text', onChange: this.experienceChange, value: this.state.experience })
+	            _react2.default.createElement('input', { type: 'text', onChange: this.experienceChange, value: this.state.experience, required: true })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Tell us about yourself:',
+	            _react2.default.createElement('input', { type: 'text', onChange: this.bioChange, value: this.state.bio, required: true })
 	          ),
 	          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
 	        )
@@ -24237,8 +24255,6 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	// import UserSearchSkills from './UserPreview';
-	
 	var UserList = function (_React$Component) {
 	  _inherits(UserList, _React$Component);
 	
@@ -24250,12 +24266,6 @@
 	
 	  _createClass(UserList, [{
 	    key: 'render',
-	
-	    // handleSearchSkills(res){
-	    //   this.setState({ users: res.data });
-	    // }
-	    // < UserSearchSkillsForm searchSkills={this.handleSearchSkills.bind(this)}/>
-	
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
