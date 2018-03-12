@@ -53,14 +53,6 @@ class UserNewForm extends React.Component {
   addToUsers = event => {
     event.preventDefault();
 
-    this.setState({
-      email: event.target.value,
-      username: event.target.value,
-      skills: event.target.value,
-      experience: event.target.value,
-      bio: event.target.value
-    });
-
     axios.post('/api/users/new', {
       username: this.state.username,
       email: this.state.email,

@@ -24,7 +24,6 @@ class App extends React.Component {
 
   componentDidMount(){
     this.loadUsersFromServer();
-    // setInterval(this.loadUsersFromServer, this.props.pollInterval);
   }
 
   render() {

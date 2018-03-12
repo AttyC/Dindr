@@ -22373,15 +22373,15 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _UserNewForm = __webpack_require__(/*! ./UserNewForm */ 216);
+	var _UserNewForm = __webpack_require__(/*! ./UserNewForm */ 210);
 	
 	var _UserNewForm2 = _interopRequireDefault(_UserNewForm);
 	
-	var _UserSearchSkillsForm = __webpack_require__(/*! ./UserSearchSkillsForm */ 219);
+	var _UserSearchSkillsForm = __webpack_require__(/*! ./UserSearchSkillsForm */ 211);
 	
 	var _UserSearchSkillsForm2 = _interopRequireDefault(_UserSearchSkillsForm);
 	
-	var _UserList = __webpack_require__(/*! ./UserList */ 220);
+	var _UserList = __webpack_require__(/*! ./UserList */ 212);
 	
 	var _UserList2 = _interopRequireDefault(_UserList);
 	
@@ -22424,7 +22424,6 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.loadUsersFromServer();
-	      // setInterval(this.loadUsersFromServer, this.props.pollInterval);
 	    }
 	  }, {
 	    key: 'render',
@@ -23958,101 +23957,6 @@
 /***/ }),
 /* 210 */
 /*!***************************************!*\
-  !*** ./src/components/UserPreview.js ***!
-  \***************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _UserProfile = __webpack_require__(/*! ./UserProfile */ 221);
-	
-	var _UserProfile2 = _interopRequireDefault(_UserProfile);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var UserPreview = function (_React$Component) {
-	  _inherits(UserPreview, _React$Component);
-	
-	  function UserPreview(props) {
-	    _classCallCheck(this, UserPreview);
-	
-	    var _this = _possibleConstructorReturn(this, (UserPreview.__proto__ || Object.getPrototypeOf(UserPreview)).call(this, props));
-	
-	    _this.state = { isHidden: true };
-	    return _this;
-	  }
-	
-	  _createClass(UserPreview, [{
-	    key: 'toggleHidden',
-	    value: function toggleHidden() {
-	      this.setState({
-	        isHidden: !this.state.isHidden
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'UserPreview' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'name' },
-	          ' ',
-	          _react2.default.createElement(
-	            'h2',
-	            null,
-	            this.props.user.username,
-	            ' '
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'skills' },
-	          ' ',
-	          this.props.user.skills,
-	          ' '
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.toggleHidden.bind(this) },
-	          'Read more about ',
-	          this.props.user.username
-	        ),
-	        !this.state.isHidden && _react2.default.createElement(_UserProfile2.default, { user: this.props.user })
-	      );
-	    }
-	  }]);
-	
-	  return UserPreview;
-	}(_react2.default.Component);
-	
-	exports.default = UserPreview;
-
-/***/ }),
-/* 211 */,
-/* 212 */,
-/* 213 */,
-/* 214 */,
-/* 215 */,
-/* 216 */
-/*!***************************************!*\
   !*** ./src/components/UserNewForm.js ***!
   \***************************************/
 /***/ (function(module, exports, __webpack_require__) {
@@ -24091,14 +23995,6 @@
 	
 	    _this.addToUsers = function (event) {
 	      event.preventDefault();
-	
-	      _this.setState({
-	        email: event.target.value,
-	        username: event.target.value,
-	        skills: event.target.value,
-	        experience: event.target.value,
-	        bio: event.target.value
-	      });
 	
 	      _axios2.default.post('/api/users/new', {
 	        username: _this.state.username,
@@ -24226,9 +24122,7 @@
 	exports.default = UserNewForm;
 
 /***/ }),
-/* 217 */,
-/* 218 */,
-/* 219 */
+/* 211 */
 /*!************************************************!*\
   !*** ./src/components/UserSearchSkillsForm.js ***!
   \************************************************/
@@ -24323,7 +24217,7 @@
 	exports.default = UserSearchSkillsForm;
 
 /***/ }),
-/* 220 */
+/* 212 */
 /*!************************************!*\
   !*** ./src/components/UserList.js ***!
   \************************************/
@@ -24341,7 +24235,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _UserPreview = __webpack_require__(/*! ./UserPreview */ 210);
+	var _UserPreview = __webpack_require__(/*! ./UserPreview */ 213);
 	
 	var _UserPreview2 = _interopRequireDefault(_UserPreview);
 	
@@ -24390,7 +24284,97 @@
 	exports.default = UserList;
 
 /***/ }),
-/* 221 */
+/* 213 */
+/*!***************************************!*\
+  !*** ./src/components/UserPreview.js ***!
+  \***************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _UserProfile = __webpack_require__(/*! ./UserProfile */ 214);
+	
+	var _UserProfile2 = _interopRequireDefault(_UserProfile);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var UserPreview = function (_React$Component) {
+	  _inherits(UserPreview, _React$Component);
+	
+	  function UserPreview(props) {
+	    _classCallCheck(this, UserPreview);
+	
+	    var _this = _possibleConstructorReturn(this, (UserPreview.__proto__ || Object.getPrototypeOf(UserPreview)).call(this, props));
+	
+	    _this.state = { isHidden: true };
+	    return _this;
+	  }
+	
+	  _createClass(UserPreview, [{
+	    key: 'toggleHidden',
+	    value: function toggleHidden() {
+	      this.setState({
+	        isHidden: !this.state.isHidden
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'UserPreview' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'name' },
+	          ' ',
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            this.props.user.username,
+	            ' '
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'skills' },
+	          ' ',
+	          this.props.user.skills,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.toggleHidden.bind(this) },
+	          'Read more about ',
+	          this.props.user.username
+	        ),
+	        !this.state.isHidden && _react2.default.createElement(_UserProfile2.default, { user: this.props.user })
+	      );
+	    }
+	  }]);
+	
+	  return UserPreview;
+	}(_react2.default.Component);
+	
+	exports.default = UserPreview;
+
+/***/ }),
+/* 214 */
 /*!***************************************!*\
   !*** ./src/components/UserProfile.js ***!
   \***************************************/
@@ -24408,7 +24392,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _LikeUserForm = __webpack_require__(/*! ./LikeUserForm */ 222);
+	var _LikeUserForm = __webpack_require__(/*! ./LikeUserForm */ 215);
 	
 	var _LikeUserForm2 = _interopRequireDefault(_LikeUserForm);
 	
@@ -24479,7 +24463,7 @@
 	exports.default = UserProfile;
 
 /***/ }),
-/* 222 */
+/* 215 */
 /*!****************************************!*\
   !*** ./src/components/LikeUserForm.js ***!
   \****************************************/
