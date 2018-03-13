@@ -24,7 +24,6 @@ class App extends React.Component {
 
   componentDidMount(){
     this.loadUsersFromServer();
-    // setInterval(this.loadUsersFromServer, this.props.pollInterval);
   }
 
   render() {
@@ -32,7 +31,7 @@ class App extends React.Component {
        <div className="App">
        <h1>Users</h1>
        < UserSearchSkillsForm searchSkills={this.handleSearchSkills.bind(this)}/>
-       <h3>Add new User:</h3>< UserNewForm />
+       <h3>Add new User:</h3>< UserNewForm loadUsersFromServer={this.loadUsersFromServer.bind(this)}/>
        <UserList users={ this.state.users} />
        </div>
     );
