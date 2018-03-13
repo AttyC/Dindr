@@ -2,21 +2,17 @@ const request = require('supertest');
 const server = require('../server')
 
 describe('POST/api/profile/new - upload a new file', () => {
-  let file = {
-    fieldname: 'file',
-    originalname: 'pic2.jpg',
-    encoding: '7bit',
-    mimetype: 'image/jpeg'
-  };
-  it('should accept a valid file', ()=>{
-    return request(server).post('/api/profile/new')
-    .send(file)
-    .then((res) => {
+
+  it('should accept a valid file', function(done){
+    request(server).post('/api/profile/new')
+    .attach('file', '__tests__/testPics/test.jpg')
+    .end( function( err, res) {
       expect(res.status).toBe(200);
-      expect(res.file.originalname).toBe('pic2.jpg');
-      expect(res.file.bucketName).toBe('uploads');
-      expect(res.file.contentType).toBe('image/jpeg');
-      expect(res.file.fieldname).toBe('file');
+      expect(res.body.file.originalname).toBe('test.jpg');
+      expect(res.body.file.bucketName).toBe('uploads');
+      expect(res.body.file.contentType).toBe('image/jpeg');
+      expect(res.body.file.fieldname).toBe('file');
+      done();
     });
   });
 });
