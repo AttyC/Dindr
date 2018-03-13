@@ -19,7 +19,7 @@ class UserProfile extends React.Component {
     return(
     <div>
       <div className="experience"> Experience: {this.props.user.experience} </div>
-      <div className="bio"> Read {this.props.user.username} bio </div>
+      <div className="bio">Bio: {this.props.user.bio} </div>
       <button onClick={this.toggleHidden.bind(this)} >
       Click to send your deets to  {this.props.user.username} ...
       </button>
