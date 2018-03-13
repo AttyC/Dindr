@@ -13,45 +13,43 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(methodOverride('_method'));
 
-// mongo URI
+
 const mongoURI = process.env.MONGOLAB_URI;
-// mongo connection
+
 const conn = mongoose.createConnection(mongoURI);
-// Init gfs
+
 let gfs;
 
 conn.once('open', ()=> {
-  // init stream
+
   gfs = Grid(conn.db, mongoose.mongo);
   gfs.collection('uploads');
 });
 
-// create storage engine
+
 
 const storage = new GridFsStorage({
   url: mongoURI,
   file: (req, file) => {
     return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => { //used to generate names - unique names
+      crypto.randomBytes(16, (err, buf) => {
         if (err) {
           return reject(err);
         }
         const filename = buf.toString('hex') + path.extname(file.originalname);
         const fileInfo = {
           filename: filename,
-          bucketName: 'uploads' // should match collection name
+          bucketName: 'uploads'
         };
-        resolve(fileInfo); // resolves the promise
+        resolve(fileInfo);
       });
     });
   }
 });
-const upload = multer({ storage }); // passes the storage engine
+const upload = multer({ storage });
 
-// @route POST/upload
-// @desc uploads file to database
 
-router.post('/new', upload.single('file'), (req, res) => { // 'file' refers to form field
+router.post('/new', upload.single('file'), (req, res) => {
   User.find({ username: req.body.username }, function(err, user){
     user = user[0];
     user.profileUpload = req.file.filename;
@@ -64,26 +62,6 @@ router.post('/new', upload.single('file'), (req, res) => { // 'file' refers to f
   });
 });
 
- /// at this point file is now saved to database.
-
- // @route to get all files saved in db
- // @desc Displays files in JSON
-router.get('/', (req, res) => {
-  // first find the files
-  gfs.files.find().toArray((err, files) =>{
-    // Check if files
-    if (!files || files.length === 0){
-      return res.status(404).json({
-        err: 'No files exist'
-      });
-    }
-    // files exist
-    return res.json(files);
-  });
-});
-
-// @route to get single files
-// @desc - gets a single file object with filename
 
 router.get('/:filename', (req, res) => {
   gfs.files.findOne({filename: req.params.filename}, (err, file) =>{ // gets filename from url
@@ -92,13 +70,11 @@ router.get('/:filename', (req, res) => {
         err: 'No file exists'
       });
     }
-    // file exists
+
     return res.json(file);
   });
 });
 
-// @route GET /image/:filename
-// @desc Display image
 
 router.get('/image/:filename', (req, res) => {
   gfs.files.findOne({filename: req.params.filename}, (err, file) =>{ // gets filename from url
@@ -107,9 +83,9 @@ router.get('/image/:filename', (req, res) => {
         err: 'No file exists'
       });
     }
-    // check if image
+
     if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
-      // Read output to browser
+
       const readstream = gfs.createReadStream(file.filename);
       readstream.pipe(res);
     } else {
