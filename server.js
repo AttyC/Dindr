@@ -3,8 +3,9 @@ import express from 'express';
 import apiRouter from './api';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-var url = process.env.MONGOLAB_URI;
+import profile from './api/profile';
 
+var url = process.env.MONGOLAB_URI;
 
 const server = express();
 // need to be added together to allow post request between express and react
@@ -12,6 +13,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
 server.use('/api', apiRouter);
+server.use('/api/profile', profile);
 server.set('view engine', 'ejs');
 
 server.get('/', (req, res)=>{

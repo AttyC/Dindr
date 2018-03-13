@@ -1,5 +1,6 @@
 import express from 'express';
 import nodemailer from'nodemailer';
+
 var emailPassword = process.env.EMAILPASSWORD;
 
 var transporter = nodemailer.createTransport({
@@ -11,8 +12,8 @@ var transporter = nodemailer.createTransport({
 });
 
 const router = express.Router();
-var User = require('../models/users.js');
 var Like = require('../models/likes.js');
+var User = require('../models/users.js');
 
 // find all users
 router.get('/users', (req, res)=>{
@@ -29,7 +30,7 @@ router.post('/users/skills', (req, res)=>{
       res.send(users.filter(function(user) {
          return (user.skills.join().search(regexOrSearchString) >= 0);
       }));
-    });  
+    });
   }
 });
 
@@ -38,7 +39,6 @@ var findUserByUserName = function(req,res){
   var username = req.params.username;
   User.find({ username: username } ).then( user => {
     if (user.length !== 0 ) {
-      console.log(user);
       res.json(user);
     } else {
       res.status(400).json({
