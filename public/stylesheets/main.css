@@ -19,10 +19,12 @@ div.UserPreview {
   text-align: center;
 }
 
-div.App {
-  background: #fff;
+.App {
   width : 700px;
   padding: 3em;
+}
+.background {
+    background: url(/img/pexels-photo-63952.jpeg) top left no-repeat ;
 }
 ul.nav {
   display: flex;
