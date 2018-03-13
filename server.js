@@ -28,6 +28,12 @@ server.get('/users', (req, res)=>{
   });
 });
 
+server.get('/users/new', (req, res)=>{
+  res.render('index', {
+    content: 'Hello Partials!!'
+  });
+});
+
 server.use(express.static('public'));
 
 server.use(function(req, res, next) {
