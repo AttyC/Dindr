@@ -1,0 +1,27 @@
+body {
+    font-family: 'Neucha', cursive;
+    font-size: 18px;
+   }
+   form {
+    display: flex;
+    flex-wrap: nowrap;
+   }
+   div.UserPreview {
+    border: 1px solid #ccc;
+    line-height: 1.8em;
+   }
+   ul.usersList {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
+    grid-gap: 20px 10px;
+   }
+   div.UserPreview div {
+    padding: 0.2em;
+   }
+   input {
+    height: 2em;
+   }
+   h4 {
+    padding: 0.8em;
+   }
