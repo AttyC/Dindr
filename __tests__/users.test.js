@@ -20,7 +20,7 @@ describe('GET/api/users - gets all users', () => {
     .expect(200)
     .then(res => {
       //check that it sends back an array
-      expect(res.body).toBeInstanceOf(Array);
+      expect(res.body).toBeInstanceOf(Object);
     });
   });
   it('should return objs w/ correct props', () => {
