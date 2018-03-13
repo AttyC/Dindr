@@ -1,0 +1,90 @@
+body {
+  font-family: 'Neucha', cursive;
+  font-size: 18px;
+}
+
+form {
+  display: grid;
+  width: 70%;
+  margin: auto;
+}
+
+.background {
+    background: url(/img/pexels-photo-63952.jpeg) top left no-repeat ;
+}
+div.UserPreview {
+  border: 1px solid #ccc;
+  line-height: 1.8em;
+  background: #fff;
+  text-align: center;
+}
+
+div.App {
+  background: #fff;
+  width : 700px;
+  padding: 3em;
+}
+ul.nav {
+  display: flex;
+  background: #fff;
+}
+ul.nav li {
+  font-size: 1.2em;
+}
+ul.usersList {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
+  grid-gap: 20px 10px;
+}
+.UserPreview div {
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+}
+.UserPreview img {
+  width: 200px;
+  border-radius: 50%;
+}
+
+input {
+  height: 2em;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ccc;
+  font-size: 14px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #ccc;
+  font-size: 14px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #ccc;
+  font-size: 14px;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #ccc;
+  font-size: 14px;
+}
+
+select.form-control,
+textarea.form-control,
+input.form-control {
+  font-size: 16px;
+}
+input[type=file] {
+  width: 100%;
+}
+
+.NotFound {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.App {
+  margin-top: 15px;
+}
+
+.App .navbar-brand {
+  font-weight: bold;
+}

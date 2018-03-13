@@ -1,5 +1,9 @@
-import React from 'react';
 import axios from 'axios';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Nav, Navbar } from "react-bootstrap";
+// // import Routes from "../Routes";
+import RouteNavItem from "./RouteNavItem";
 import UserNewForm from './UserNewForm';
 
 class App extends React.Component {
@@ -7,11 +11,17 @@ class App extends React.Component {
     super(props);
   }
 
+  loadUsersFromServer(){
+    axios.get('/api/users')
+    .then(res => {
+      this.setState({ users: res.data });
+    });
+  }
+
   render() {
     return (
-       <div className="App">
-       <h1>Users</h1>
-       <h3>Add new User:</h3>< UserNewForm loadUsersFromServer={this.loadUsersFromServer.bind(this)}/>
+       <div className="App container background">
+         <h3>Add new User:</h3>< UserNewForm loadUsersFromServer={this.loadUsersFromServer.bind(this)}/>
        </div>
     );
   }

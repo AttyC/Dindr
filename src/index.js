@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Component } from "react";
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Navbar } from "react-bootstrap";
 import App from './components/App';
 import Users from './components/Users';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Routing = () => (
     <Router>
       <div>
-        <ul>
+        <ul className="container nav">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -15,15 +16,11 @@ const Routing = () => (
             <Link to="/users">Users</Link>
           </li>
         </ul>
-  
-        <hr />
-  
         <Route exact path="/" component={App} />
         <Route exact path="/users" component={Users} />
       </div>
     </Router>
   );
-  
 
 ReactDOM.render(
       <Routing />,

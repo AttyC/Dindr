@@ -19,7 +19,9 @@
     "nodemailer": "^4.6.2",
     "qs-set": "0.0.3",
     "react": "^15.3.2",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^15.3.2",
+    "react-gridforms": "^1.0.2",
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
