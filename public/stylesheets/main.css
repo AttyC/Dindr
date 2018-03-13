@@ -25,3 +25,10 @@ input {
 h4 {
   padding: 0.8em;
 }
+
+img {
+  vertical-align: middle;
+  width: 200px;
+  height: 200px;
+  padding-left: 10px;
+}

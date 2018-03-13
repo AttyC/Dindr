@@ -24394,6 +24394,7 @@
 	            ' '
 	          )
 	        ),
+	        _react2.default.createElement('img', { src: 'http://localhost:4444/api/profile/image/' + this.props.user.profileUpload }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'skills' },
