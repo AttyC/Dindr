@@ -63,7 +63,7 @@ class UserNewForm extends React.Component {
     const formData = new FormData();
 
     formData.append('file', file);
-    formData.append('username', username);
+    formData.append('username', this.state.username);
 
     const config = {
       headers: {

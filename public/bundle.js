@@ -24100,7 +24100,7 @@
 	      var formData = new FormData();
 	
 	      formData.append('file', file);
-	      formData.append('username', username);
+	      formData.append('username', this.state.username);
 	
 	      var config = {
 	        headers: {
