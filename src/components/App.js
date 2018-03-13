@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
        <div className="App">
        <h1>Users</h1>
-       <h3>Add new User:</h3>< UserNewForm />
+       <h3>Add new User:</h3>< UserNewForm loadUsersFromServer={this.loadUsersFromServer.bind(this)}/>
        </div>
     );
   }
