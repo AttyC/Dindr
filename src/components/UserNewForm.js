@@ -63,14 +63,14 @@ class UserNewForm extends React.Component {
     const formData = new FormData();
 
     formData.append('file', file);
-    formData.append('username', this.state.username);
+    formData.append('username', username);
 
-      const config = {
-        headers: {
-          'content-type': 'multipart/ form-data'
-        }
+    const config = {
+      headers: {
+        'content-type': 'multipart/ form-data'
       }
-      return axios.post(url, formData,config)
+    };
+    return axios.post(url, formData,config);
   }
 
 
@@ -100,9 +100,9 @@ class UserNewForm extends React.Component {
      console.log(err, 'User not added, try again');
    });
 
-   this.fileUpload(this.state.file).then((response)=>{
+    this.fileUpload(this.state.file).then((response)=>{
       console.log(response.data);
-    })
+    });
 
     this.setState({
       username: '',
