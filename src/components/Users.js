@@ -27,7 +27,7 @@ class Users extends React.Component {
 
   render() {
     return (
-       <div className="Users background">
+       <div className="Users container">
        <h1>Developers</h1>
        < UserSearchSkillsForm searchSkills={this.handleSearchSkills.bind(this)}/>
        <UserList users={this.state.users} />

@@ -1,6 +1,7 @@
 body {
   font-family: 'Neucha', cursive;
   font-size: 18px;
+  background: -webkit-linear-gradient(150deg, #350014 35%, #d42713 35%);
 }
 
 form {
@@ -8,9 +9,10 @@ form {
   width: 70%;
   margin: auto;
 }
-
-.background {
-    background: url(/img/pexels-photo-63952.jpeg) top left no-repeat ;
+.jumbotron {
+  margin: 4em;
+  text-align: center;
+  line-height: 2em;
 }
 div.UserPreview {
   border: 1px solid #ccc;
@@ -18,20 +20,28 @@ div.UserPreview {
   background: #fff;
   text-align: center;
 }
-
+h1 {
+    color: #F0FFCE;
+}
 .App {
   width : 700px;
   padding: 3em;
 }
-.background {
-    background: url(/img/pexels-photo-63952.jpeg) top left no-repeat ;
-}
 ul.nav {
   display: flex;
-  background: #fff;
+  justify-content: space-between;
+  margin-top: 30px;
 }
 ul.nav li {
-  font-size: 1.2em;
+
+}
+ul.nav li a {
+  color: #F0FFCE;
+  font-size: 1.6em;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+  background: none;
+  color: #F0FFCE;
 }
 ul.usersList {
   list-style-type: none;
