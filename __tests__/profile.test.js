@@ -32,11 +32,22 @@ describe('GET/api/profile/', () => {
     .get('/api/profile/d3f6ff71adb7468602442cc3d1ceee7f.png')
     .expect(200)
     .then(res => {
-      // check for the expected properties
       let sampleKeys = Object.keys(res.body);
       expectedProps.forEach((key) => {
-        expect(sampleKeys.includes(key)).toBe(true);
+      expect(sampleKeys.includes(key)).toBe(true);
       });
+    });
+  });
+  it('shouldnt return objs with extra props', ()=>{
+    return request(server)
+    .get('/api/profile/d3f6ff71adb7468602442cc3d1ceee7f.png')
+    .expect(200)
+    .then(res => {
+      // check for only expectedProps
+      let extraProps = Object.keys(res.body).filter((key) => {
+        return !expectedProps.includes(key);
+      });
+      expect(extraProps.length).toBe(0);
     });
   });
 });
