@@ -10,7 +10,7 @@ describe('POST/api/users/skills - find users by skill', () => {
       expect(res.body[0].username).toBe("Alex")
     });
   });
-});
+});           
 
 describe('GET/api/users - gets all users', () => {
   let expectedProps = ['_id', 'username', 'email', 'skills', 'experience', '__v'];
@@ -20,7 +20,7 @@ describe('GET/api/users - gets all users', () => {
     .expect(200)
     .then(res => {
       //check that it sends back an array
-      expect(res.body).toBeInstanceOf(Object);
+      expect(res.body).toBeInstanceOf(Array);
     });
   });
   it('should return objs w/ correct props', () => {
