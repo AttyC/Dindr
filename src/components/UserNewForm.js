@@ -21,7 +21,7 @@ class UserNewForm extends React.Component {
     this.bioChange = this.bioChange.bind(this);
     this.pictureUploadChange = this.pictureUploadChange.bind(this);
   }
-//
+
   usernameChange(e) {
     this.setState({
       username: e.target.value
@@ -77,14 +77,6 @@ class UserNewForm extends React.Component {
   addToUsers = event => {
     event.preventDefault();
 
-    this.setState({
-      email: event.target.value,
-      username: event.target.value,
-      skills: event.target.value,
-      experience: event.target.value,
-      bio: event.target.value
-    });
-
     axios.post('/api/users/new', {
       username: this.state.username,
       email: this.state.email,
@@ -95,9 +87,12 @@ class UserNewForm extends React.Component {
 
     .then(response => {
       console.log(response, 'User added');
+      alert('User added');
+      this.props.loadUsersFromServer()
     })
    .catch(err => {
      console.log(err, 'User not added, try again');
+     alert(err,'User not added, try again');
    });
 
     this.fileUpload(this.state.file).then((response)=>{
