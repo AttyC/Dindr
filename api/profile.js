@@ -51,7 +51,7 @@ const upload = multer({ storage }); // passes the storage engine
 // @route POST/upload
 // @desc uploads file to database
 
-router.post('/', upload.single('file'), (req, res) => { // 'file' refers to form field
+router.post('/new', upload.single('file'), (req, res) => { // 'file' refers to form field
   User.find({ username: req.body.username }, function(err, user){
     user = user[0];
     user.profileUpload = req.file.filename;

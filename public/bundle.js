@@ -24096,7 +24096,7 @@
 	  }, {
 	    key: 'fileUpload',
 	    value: function fileUpload(file) {
-	      var url = '/api/profile';
+	      var url = '/api/profile/new';
 	      var formData = new FormData();
 	
 	      formData.append('file', file);
