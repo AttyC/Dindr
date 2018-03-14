@@ -1,0 +1,30 @@
+div.UserPreview {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  line-height: 1.8em;
+  background: #fff;
+  text-align: center;
+  color: #333;
+}
+.UserPreview div {
+  padding: 0.5em;
+}
+.profile-image {
+  border-radius: 50%;
+}
+.profile-image img {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.user-profile {
+  text-align: left;
+}
+ul.usersList {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
+  grid-gap: 20px 20px;
+}

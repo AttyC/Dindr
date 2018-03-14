@@ -13,6 +13,14 @@ body {
   background: -o-linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
   background: linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
 }
+.App {
+  width : 700px;
+  padding: 3em;
+}
+h1, label {
+  color: #F0FFCE;
+  text-align: center;
+}
 .logo {
   background: url(/img/dinder0.png) no-repeat;
   height: 100px;
@@ -21,121 +29,32 @@ body {
   background: url(/img/dinder0.png) no-repeat;
   color: #05A8AA;
 }
-.jumbotron {
-  margin: 4em;
-  text-align: center;
-  line-height: 2em;
-  background: none;
-}
-.jumbotron h1 {
-  margin: auto;
-}
-.jumbotron h3 {
-  text-align: right;
-  padding: 1.2em;
-}
-.home-image {
-  width: 100px;
-}
-#user-form{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
-  grid-gap: 20px 20px;
-}
-#skills-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 50px;
-}
-input {
-  height: 2em;
-  border-radius: 10px;
-  color: #333;
-}
-
-div.UserPreview {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  line-height: 1.8em;
-  background: #fff;
-  text-align: center;
-  color: #333;
-}
-.UserPreview div {
-  padding: 0.5em;
-}
-.profile-image {
-  border-radius: 50%;
-}
-.profile-image img {
-  width: 150px;
-  height: 150px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 50%;
-}
-.user-profile {
-  text-align: left;
-}
-h1, label {
-  color: #F0FFCE;
-  text-align: center;
-}
-.App {
-  width : 700px;
-  padding: 3em;
-}
 ul.nav {
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
 }
-ul.nav li {
 
-}
 ul.nav li a {
   color: #F0FFCE;
   font-size: 1.6em;
 }
 .nav>li>a:focus, .nav>li>a:hover {
   background: none;
-  color: #05A8AA;
-}
-ul.usersList {
-  list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
-  grid-gap: 20px 20px;
-}
-
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #ccc;
-  font-size: 14px;
-}
-::-moz-placeholder { /* Firefox 19+ */
-  color: #ccc;
-  font-size: 14px;
-}
-:-ms-input-placeholder { /* IE 10+ */
-  color: #ccc;
-  font-size: 14px;
-}
-:-moz-placeholder { /* Firefox 18- */
-  color: #ccc;
-  font-size: 14px;
-}
-
-select.form-control,
-textarea.form-control,
-input.form-control {
-  font-size: 16px;
-}
-input[type=file] {
-  width: 100%;
+  /* color: #05A8AA; */
+  color: #2274A5;
 }
 
 .NotFound {
   padding-top: 100px;
   text-align: center;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+footer a {
+  color: #2274A5;
+  font-size: 0.8em;
 }

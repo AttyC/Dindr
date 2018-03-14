@@ -11,7 +11,7 @@ const Routing = () => (
       <div>
         <ul className="container nav">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/"><img className='home-image' src='/img/dinder.png' /></Link>
           </li>
           <li>
             <Link to="/users">Find Developers</Link>
@@ -20,8 +20,8 @@ const Routing = () => (
             <Link to="/users/new">Add a Developer</Link>
           </li>
         </ul>
-        <Route exact path="/" component={Home} />
         <Route exact path="/users/new" component={App} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/users" component={Users} />
       </div>
     </Router>
