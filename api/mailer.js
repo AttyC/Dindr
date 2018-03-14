@@ -39,6 +39,6 @@ var sendEmailNotification = function(mailOptions) {
     if (err)
       console.log(err);
     else
-    console.log(info);
+      console.log(info);
   });
 };

@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', (req, res)=>{
-  res.send('Welcome to Dind\'r API');
+  res.send('Welcome to Dinder API');
 });
 
 export default router;
