@@ -46,6 +46,9 @@
     "test": "jest --verbose",
     "dev": "webpack -wd"
   },
+  "engines": {
+    "node": "8.9.4"
+  },
   "author": "Phil Budgen, Leigh-Ann Gant, Simon Bao, Samuel Wood, Antonia Cronin, Alex Sergides",
   "license": "ISC"
 }
