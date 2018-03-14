@@ -7,31 +7,25 @@ import GridFsStorage from 'multer-gridfs-storage';
 import Grid from 'gridfs-stream';
 import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
-var User = require('../models/users.js');
 
+let gfs;
+let User = require('../models/users.js');
+const mongoURI = process.env.MONGOLAB_URI;
+const conn = mongoose.createConnection(mongoURI);
 const router = express.Router();
+const upload = multer({ storage });
+
 router.use(bodyParser.json());
 router.use(methodOverride('_method'));
 
-
-const mongoURI = process.env.MONGOLAB_URI;
-
-const conn = mongoose.createConnection(mongoURI);
-
-let gfs;
-
 conn.once('open', ()=> {
-
   gfs = Grid(conn.db, mongoose.mongo);
   gfs.collection('uploads');
 });
 
-
-
 const storage = new GridFsStorage({
   url: mongoURI,
   file: (req, file) => {
-    console.log(file)
     return new Promise((resolve, reject) => {
       crypto.randomBytes(16, (err, buf) => {
         if (err) {
@@ -47,8 +41,6 @@ const storage = new GridFsStorage({
     });
   }
 });
-const upload = multer({ storage });
-
 
 router.post('/new', upload.single('file'), (req, res) => {
   User.find({ username: req.body.username }, function(err, user){
@@ -63,7 +55,6 @@ router.post('/new', upload.single('file'), (req, res) => {
   });
 });
 
-
 router.get('/:filename', (req, res) => {
   gfs.files.findOne({filename: req.params.filename}, (err, file) =>{ // gets filename from url
     if (!file || file.length === 0){
@@ -71,11 +62,9 @@ router.get('/:filename', (req, res) => {
         err: 'No file exists'
       });
     }
-
     return res.json(file);
   });
 });
-
 
 router.get('/image/:filename', (req, res) => {
   gfs.files.findOne({filename: req.params.filename}, (err, file) =>{ // gets filename from url
@@ -84,9 +73,7 @@ router.get('/image/:filename', (req, res) => {
         err: 'No file exists'
       });
     }
-
     if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
-
       const readstream = gfs.createReadStream(file.filename);
       readstream.pipe(res);
     } else {

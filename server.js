@@ -4,6 +4,7 @@ import apiRouter from './api';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import profile from './api/profile';
+import users from './api/users';
 
 var url = process.env.MONGOLAB_URI;
 
@@ -14,6 +15,7 @@ server.use(bodyParser.json());
 
 server.use('/api', apiRouter);
 server.use('/api/profile', profile);
+server.use('/api/users', users);
 server.set('view engine', 'ejs');
 
 server.get('/', (req, res)=>{
