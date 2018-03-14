@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 var User = require('../models/users.js');
+var Like = require('../models/likes.js');
 
 router.get('/', (req, res)=>{
   User.find({}).then(user => {
@@ -48,5 +49,36 @@ router.post('/skills', (req, res)=>{
     });
   }
 });
+
+router.post('/:username/likes', (req, res)=>{
+  var username = req.params.username;
+  Like.create({
+    usernameOfLiked_id: username,
+    nameOfLiker: req.body.nameOfLiker,
+    emailOfLiker: req.body.emailOfLiker,
+    locationOfLiker: req.body.locationOfLiker,
+    message: req.body.message
+  }).then(like => {
+    setMailOptions(like._id);
+    res.json(like);
+  });
+});
+
+var findUserLikes = function(req,res){
+  var username = req.params.username;
+  Like.find({ usernameOfLiked_id: username } ).then( userLikes => {
+    if (userLikes.length !== 0 ) {
+      res.json(userLikes);
+    } else {
+      res.status(400).json({
+        status: res.status,
+        message: `No likes found for: ${username}`
+      });
+    }
+  });
+};
+
+router.get('/:username/likes', findUserLikes);
+
 
 module.exports = router;
