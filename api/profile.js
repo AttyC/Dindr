@@ -10,7 +10,16 @@ import bodyParser from 'body-parser';
 
 let gfs;
 let User = require('../models/users.js');
-const mongoURI = process.env.MONGOLAB_URI;
+
+var getUrl = function(){
+  if (process.env.NODE_ENV == 'test') {
+    return process.env.MONGOLAB_URI_TEST;
+  } else {
+    return process.env.MONGOLAB_URI;
+  }
+};
+
+const mongoURI = getUrl();
 const conn = mongoose.createConnection(mongoURI);
 const router = express.Router();
 
