@@ -7,6 +7,9 @@
 .jumbotron h1 {
   margin: auto;
 }
+.jumbotron h2 {
+  padding: 0.3em;
+}
 .jumbotron h3 {
   text-align: right;
   padding: 1.2em;
