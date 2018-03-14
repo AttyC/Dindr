@@ -7,6 +7,13 @@ class App extends React.Component {
     super(props);
   }
 
+  loadUsersFromServer(){
+    axios.get('/api/users')
+    .then(res => {
+      this.setState({ users: res.data });
+    });
+  }
+
   render() {
     return (
        <div className="App">
