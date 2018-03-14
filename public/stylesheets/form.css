@@ -17,6 +17,9 @@ input {
 textarea, button {
   border-radius: 10px;
 }
+textarea {
+  color: #333;
+}
 input[type=file] {
   color: #F0FFCE;
   border-radius: 10px;
