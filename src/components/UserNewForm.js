@@ -114,22 +114,22 @@ class UserNewForm extends React.Component {
 
       <div>
         <form id='user-form' onSubmit = {this.addToUsers}>
-          <label for='username'>
+          <label htmlFor='username'>
           Username:</label>
           <input type='text' onChange={this.usernameChange} value={this.state.username} id='username' placeholder='enter your name...' required />
-          <label for='email'>
+          <label htmlFor='email'>
           Email:</label>
           <input type='text' onChange={this.emailChange} value={this.state.email} id='email' placeholder='enter your email...' required />
-          <label for='skills'>
+          <label htmlFor='skills'>
           Skills:</label>
           <input type='text' onChange={this.skillChange} value={this.state.skills} id='skills' placeholder='enter your developer skills...' required />
-          <label for='experience'>
+          <label htmlFor='experience'>
           Experience:</label>
           <input type='text' onChange={this.experienceChange} value={this.state.experience} id='experience' placeholder='enter your experience...' required />
-          <label for='bio'>
+          <label htmlFor='bio'>
           Tell us about yourself:</label>
           <input type='text' onChange={this.bioChange} value={this.state.bio} id='bio' placeholder='enter your name...' required />
-          <label for='pic'>
+          <label htmlFor='pic'>
           Add profile pic</label>
           <input type="file" name='file' id='pic' onChange={this.pictureUploadChange} value={this.state.files}/>
           <input type="submit" value ="Submit" />
