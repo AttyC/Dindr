@@ -14,10 +14,14 @@ input {
   border-radius: 10px;
   color: #333;
 }
+textarea, button {
+  border-radius: 10px;
+}
 input[type=file] {
   color: #F0FFCE;
+  border-radius: 10px;
+  width: 100%;
 }
-
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #ccc;
   font-size: 14px;
@@ -39,7 +43,4 @@ select.form-control,
 textarea.form-control,
 input.form-control {
   font-size: 16px;
-}
-input[type=file] {
-  width: 100%;
 }

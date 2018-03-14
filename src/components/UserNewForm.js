@@ -119,16 +119,16 @@ class UserNewForm extends React.Component {
           <input type='text' onChange={this.usernameChange} value={this.state.username} id='username' placeholder='enter your name...' required />
           <label htmlFor='email'>
           Email:</label>
-          <input type='text' onChange={this.emailChange} value={this.state.email} id='email' placeholder='enter your email...' required />
+          <input type='text' onChange={this.emailChange} value={this.state.email} id='email' placeholder='enter your email address...' required />
           <label htmlFor='skills'>
           Skills:</label>
-          <input type='text' onChange={this.skillChange} value={this.state.skills} id='skills' placeholder='enter your developer skills...' required />
+          <textarea onChange={this.skillChange} value={this.state.skills} id='skills' placeholder='enter your developer languages and skills...' required />
           <label htmlFor='experience'>
           Experience:</label>
-          <input type='text' onChange={this.experienceChange} value={this.state.experience} id='experience' placeholder='enter your experience...' required />
+          <input type='text' onChange={this.experienceChange} value={this.state.experience} id='experience' placeholder='tell us your level of experience...' required />
           <label htmlFor='bio'>
           Tell us about yourself:</label>
-          <input type='text' onChange={this.bioChange} value={this.state.bio} id='bio' placeholder='enter your name...' required />
+          <textarea onChange={this.bioChange} value={this.state.bio} id='bio' placeholder='enter your hobbies and quirks...' required />
           <label htmlFor='pic'>
           Add profile pic</label>
           <input type="file" name='file' id='pic' onChange={this.pictureUploadChange} value={this.state.files}/>

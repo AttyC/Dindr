@@ -17,9 +17,13 @@ body {
   width : 700px;
   padding: 3em;
 }
-h1, label {
+h1 {
   color: #F0FFCE;
   text-align: center;
+}
+label {
+  color: #F0FFCE;
+  text-align: right;
 }
 .logo {
   background: url(/img/logo/dinder-logo.png) no-repeat;
