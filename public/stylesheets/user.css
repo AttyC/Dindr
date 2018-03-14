@@ -7,17 +7,19 @@ div.UserPreview {
   color: #333;
 }
 .UserPreview div {
-  padding: 0.5em;
+  padding: 0.3em;
 }
 .profile-image {
   border-radius: 50%;
 }
 .profile-image img {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   position: relative;
   overflow: hidden;
   border-radius: 50%;
+  border: 2px solid #ccc;
+  background: #ccc;
 }
 .user-profile {
   text-align: left;

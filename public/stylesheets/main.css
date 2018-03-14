@@ -22,12 +22,28 @@ h1, label {
   text-align: center;
 }
 .logo {
-  background: url(/img/dinder0.png) no-repeat;
+  background: url(/img/logo/dinder-logo.png) no-repeat;
   height: 100px;
 }
-.nav>li>.logo:focus, .nav>li>.logo:hover {
-  background: url(/img/dinder0.png) no-repeat;
+.nav>li>a.logo {
+  background: url(/img/logo/dinder-logo-150px.png) no-repeat;
+  width: 150px;
+}
+.nav>li>a.logo:focus, .nav>li>a.logo:hover {
+  background: url(/img/logo/dinder-darker-150px.png) no-repeat;
   color: #05A8AA;
+}
+a {
+  text-decoration: none;
+}
+nav>li>a:focus, .nav>li>a:hover, a:focus, a:hover{
+    text-decoration: none;
+    background: none;
+    color: #75DBCD;
+}
+
+ul {
+  list-style-type: none
 }
 ul.nav {
   display: flex;
@@ -37,22 +53,15 @@ ul.nav {
 
 ul.nav li a {
   color: #F0FFCE;
-  font-size: 1.6em;
+  font-size: 1.5em;
 }
-.nav>li>a:focus, .nav>li>a:hover {
-  background: none;
-  /* color: #05A8AA; */
-  color: #2274A5;
-}
-
 .NotFound {
   padding-top: 100px;
   text-align: center;
 }
 
 footer {
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 footer a {
   color: #2274A5;
