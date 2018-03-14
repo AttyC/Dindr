@@ -51,7 +51,6 @@ const storage = new GridFsStorage({
 });
 const upload = multer({ storage });
 
-const upload = multer({ storage });
 router.post('/new', upload.single('file'), (req, res) => {
   User.find({ username: req.body.username }, function(err, user){
     user = user[0];
@@ -70,7 +69,6 @@ router.get('/', (req, res)=>{
 });
 
 router.get('/:filename', (req, res) => {
-  console.log(2)
   gfs.files.findOne({filename: req.params.filename}, (err, file) =>{ // gets filename from url
     if (!file || file.length === 0){
       return res.status(404).json({
