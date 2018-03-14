@@ -15,6 +15,7 @@ server.use(bodyParser.json());
 
 server.use('/api', apiRouter);
 server.use('/api/profile', profile);
+server.use('/api/users', users);
 server.set('view engine', 'ejs');
 
 server.get('/', (req, res)=>{
