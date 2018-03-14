@@ -27,11 +27,14 @@ h1, label {
 }
 .nav>li>a.logo {
   background: url(/img/logo/dinder-logo-150px.png) no-repeat;
+  height: 50px;
   width: 150px;
 }
 .nav>li>a.logo:focus, .nav>li>a.logo:hover {
   background: url(/img/logo/dinder-darker-150px.png) no-repeat;
   color: #05A8AA;
+  height: 50px;
+  width: 150px;
 }
 a {
   text-decoration: none;
@@ -64,6 +67,17 @@ footer {
   text-align: center;
 }
 footer a {
-  color: #2274A5;
+  color: #8de4f0;
   font-size: 0.8em;
+}
+footer ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer ul li {
+  padding: 0.8em;
+  font-weight: bold;
+  font-size: 1.2em;
 }

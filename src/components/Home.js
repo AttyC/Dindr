@@ -10,7 +10,7 @@ export default class Home extends Component {
         <div className="jumbotron">
           <img className='home-image network' src='/img/icon/thinking.png' />
           <h1 className="logo"></h1>
-          <h3>Find local developers with the skills you need</h3>
+          <h2>Find local developers with the skills you need</h2>
           <img className='home-image rocket' src='/img/icon/thinking-rocket.png' />
         </div>
       </div>
