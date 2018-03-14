@@ -37,10 +37,9 @@ class UserSearchSkillsForm extends React.Component {
   render() {
     return (
       <div>
-      <form onSubmit = {this.searchSkills}>
-      <label>
-      Search by skills:
-      <input type='text' onChange={this.skillChange} value={this.state.skills} /></label>
+      <form id='skills-form' onSubmit = {this.searchSkills}>
+      <label for='skills-search'><h2>Search Developers by skills:</h2></label>
+      <input type='text' id='skills-search' onChange={this.skillChange} value={this.state.skills} />
       <input type="submit" value ="Submit" />
       </form>
       </div>

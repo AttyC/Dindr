@@ -1,27 +1,86 @@
-body {
-  font-family: 'Neucha', cursive;
-  font-size: 18px;
-  background: -webkit-linear-gradient(150deg, #350014 35%, #d42713 35%);
+html {
+  min-height: 100%;
 }
-
-form {
-  display: grid;
-  width: 70%;
-  margin: auto;
+body {
+  font-family: 'Inconsolata', monospace;
+  font-size: 18px;
+  color: #F0FFCE;
+  width: 100%;
+  background-repeat:no-repeat;
+  background: -webkit-linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
+  background: -moz-linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
+  background: -ms-linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
+  background: -o-linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
+  background: linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
+}
+.logo {
+  background: url(/img/dinder0.png) no-repeat;
+  height: 100px;
+}
+.nav>li>.logo:focus, .nav>li>.logo:hover {
+  background: url(/img/dinder0.png) no-repeat;
+  color: #05A8AA;
 }
 .jumbotron {
   margin: 4em;
   text-align: center;
   line-height: 2em;
+  background: none;
 }
+.jumbotron h1 {
+  margin: auto;
+}
+.jumbotron h3 {
+  text-align: right;
+  padding: 1.2em;
+}
+.home-image {
+  width: 100px;
+}
+#user-form{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
+  grid-gap: 20px 20px;
+}
+#skills-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+input {
+  height: 2em;
+  border-radius: 10px;
+  color: #333;
+}
+
 div.UserPreview {
   border: 1px solid #ccc;
+  border-radius: 10px;
   line-height: 1.8em;
   background: #fff;
   text-align: center;
+  color: #333;
 }
-h1 {
-    color: #F0FFCE;
+.UserPreview div {
+  padding: 0.5em;
+}
+.profile-image {
+  border-radius: 50%;
+}
+.profile-image img {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.user-profile {
+  text-align: left;
+}
+h1, label {
+  color: #F0FFCE;
+  text-align: center;
 }
 .App {
   width : 700px;
@@ -41,27 +100,15 @@ ul.nav li a {
 }
 .nav>li>a:focus, .nav>li>a:hover {
   background: none;
-  color: #F0FFCE;
+  color: #05A8AA;
 }
 ul.usersList {
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
-  grid-gap: 20px 10px;
-}
-.UserPreview div {
-  padding: 0.5em;
-  display: flex;
-  justify-content: center;
-}
-.UserPreview img {
-  width: 200px;
-  border-radius: 50%;
+  grid-gap: 20px 20px;
 }
 
-input {
-  height: 2em;
-}
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #ccc;
   font-size: 14px;
@@ -91,12 +138,4 @@ input[type=file] {
 .NotFound {
   padding-top: 100px;
   text-align: center;
-}
-
-.App {
-  margin-top: 15px;
-}
-
-.App .navbar-brand {
-  font-weight: bold;
 }

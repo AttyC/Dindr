@@ -113,7 +113,7 @@ class UserNewForm extends React.Component {
     return (
 
       <div>
-        <form className='user-form' onSubmit = {this.addToUsers}>
+        <form id='user-form' onSubmit = {this.addToUsers}>
           <label for='username'>
           Username:</label>
           <input type='text' onChange={this.usernameChange} value={this.state.username} id='username' placeholder='enter your name...' required />
