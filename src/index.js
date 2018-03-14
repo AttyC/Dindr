@@ -11,7 +11,7 @@ const Routing = () => (
       <div>
         <ul className="container nav">
           <li>
-            <Link to="/"><img className='home-image' src='/img/dinder.png' /></Link>
+            <Link to="/" className ='logo'></Link>
           </li>
           <li>
             <Link to="/users">Find Developers</Link>
