@@ -3,7 +3,6 @@ import nodemailer from'nodemailer';
 var Like = require('../models/likes.js');
 var User = require('../models/users.js');
 
-
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {

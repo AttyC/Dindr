@@ -1,5 +1,5 @@
 import express from 'express';
-import {setMailOptions} from './mailer';
+import { setMailOptions } from './mailer';
 
 const router = express.Router();
 
