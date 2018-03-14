@@ -1,4 +1,6 @@
 import express from 'express';
+import {setMailOptions} from './mailer';
+
 const router = express.Router();
 
 var User = require('../models/users.js');
@@ -79,6 +81,5 @@ var findUserLikes = function(req,res){
 };
 
 router.get('/:username/likes', findUserLikes);
-
 
 module.exports = router;
