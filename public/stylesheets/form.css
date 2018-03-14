@@ -1,0 +1,45 @@
+#user-form{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
+  grid-gap: 20px 20px;
+}
+#skills-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+input {
+  height: 2em;
+  border-radius: 10px;
+  color: #333;
+}
+input[type=file] {
+  color: #F0FFCE;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ccc;
+  font-size: 14px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #ccc;
+  font-size: 14px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #ccc;
+  font-size: 14px;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #ccc;
+  font-size: 14px;
+}
+
+select.form-control,
+textarea.form-control,
+input.form-control {
+  font-size: 16px;
+}
+input[type=file] {
+  width: 100%;
+}

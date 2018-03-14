@@ -111,26 +111,27 @@ class UserNewForm extends React.Component {
 
   render() {
     return (
+
       <div>
-        <form onSubmit = {this.addToUsers}>
-          <label>
-          Username:
-          <input type='text' onChange={this.usernameChange} value={this.state.username} required /></label>
-          <label>
-          Email:
-          <input type='text' onChange={this.emailChange} value={this.state.email} required /></label>
-          <label>
-          Skills:
-          <input type='text' onChange={this.skillChange} value={this.state.skills} required /></label>
-          <label>
-          Experience:
-          <input type='text' onChange={this.experienceChange} value={this.state.experience} required /></label>
-          <label>
-          Tell us about yourself:
-          <input type='text' onChange={this.bioChange} value={this.state.bio} required /></label>
-          <label>
-          Add profile pic
-          <input type="file" name='file' onChange={this.pictureUploadChange} value={this.state.files}/></label>
+        <form id='user-form' onSubmit = {this.addToUsers}>
+          <label for='username'>
+          Username:</label>
+          <input type='text' onChange={this.usernameChange} value={this.state.username} id='username' placeholder='enter your name...' required />
+          <label for='email'>
+          Email:</label>
+          <input type='text' onChange={this.emailChange} value={this.state.email} id='email' placeholder='enter your email...' required />
+          <label for='skills'>
+          Skills:</label>
+          <input type='text' onChange={this.skillChange} value={this.state.skills} id='skills' placeholder='enter your developer skills...' required />
+          <label for='experience'>
+          Experience:</label>
+          <input type='text' onChange={this.experienceChange} value={this.state.experience} id='experience' placeholder='enter your experience...' required />
+          <label for='bio'>
+          Tell us about yourself:</label>
+          <input type='text' onChange={this.bioChange} value={this.state.bio} id='bio' placeholder='enter your name...' required />
+          <label for='pic'>
+          Add profile pic</label>
+          <input type="file" name='file' id='pic' onChange={this.pictureUploadChange} value={this.state.files}/>
           <input type="submit" value ="Submit" />
         </form>
       </div>

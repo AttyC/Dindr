@@ -17,7 +17,7 @@ class UserProfile extends React.Component {
 
   render () {
     return(
-    <div>
+    <div className='user-profile'>
       <div className="experience"> Experience: {this.props.user.experience} </div>
       <div className="bio">Bio: {this.props.user.bio} </div>
       <button onClick={this.toggleHidden.bind(this)} >

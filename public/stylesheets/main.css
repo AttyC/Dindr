@@ -1,27 +1,69 @@
+html {
+  min-height: 100%;
+}
 body {
-    font-family: 'Neucha', cursive;
-    font-size: 18px;
-   }
-   form {
-    display: flex;
-    flex-wrap: nowrap;
-   }
-   div.UserPreview {
-    border: 1px solid #ccc;
-    line-height: 1.8em;
-   }
-   ul.usersList {
-    list-style-type: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
-    grid-gap: 20px 10px;
-   }
-   div.UserPreview div {
-    padding: 0.2em;
-   }
-   input {
-    height: 2em;
-   }
-   h4 {
-    padding: 0.8em;
-   }
+  font-family: 'Inconsolata', monospace;
+  font-size: 18px;
+  color: #F0FFCE;
+  width: 100%;
+  background-repeat:no-repeat;
+  background: -webkit-linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
+  background: -moz-linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
+  background: -ms-linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
+  background: -o-linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
+  background: linear-gradient(50deg, #350014 45%, #d42713 35%) fixed;
+}
+.App {
+  width : 700px;
+  padding: 3em;
+}
+h1, label {
+  color: #F0FFCE;
+  text-align: center;
+}
+.logo {
+  background: url(/img/logo/dinder-logo.png) no-repeat;
+  height: 100px;
+}
+.nav>li>a.logo {
+  background: url(/img/logo/dinder-logo-150px.png) no-repeat;
+  width: 150px;
+}
+.nav>li>a.logo:focus, .nav>li>a.logo:hover {
+  background: url(/img/logo/dinder-darker-150px.png) no-repeat;
+  color: #05A8AA;
+}
+a {
+  text-decoration: none;
+}
+nav>li>a:focus, .nav>li>a:hover, a:focus, a:hover{
+    text-decoration: none;
+    background: none;
+    color: #75DBCD;
+}
+
+ul {
+  list-style-type: none
+}
+ul.nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+ul.nav li a {
+  color: #F0FFCE;
+  font-size: 1.5em;
+}
+.NotFound {
+  padding-top: 100px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+}
+footer a {
+  color: #2274A5;
+  font-size: 0.8em;
+}
