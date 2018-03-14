@@ -13,7 +13,6 @@ let User = require('../models/users.js');
 const mongoURI = process.env.MONGOLAB_URI;
 const conn = mongoose.createConnection(mongoURI);
 const router = express.Router();
-const upload = multer({ storage });
 
 router.use(bodyParser.json());
 router.use(methodOverride('_method'));
@@ -41,6 +40,7 @@ const storage = new GridFsStorage({
     });
   }
 });
+const upload = multer({ storage });
 
 router.post('/new', upload.single('file'), (req, res) => {
   User.find({ username: req.body.username }, function(err, user){
@@ -53,6 +53,10 @@ router.post('/new', upload.single('file'), (req, res) => {
     });
     res.json({file: req.file});
   });
+});
+
+router.get('/', (req, res)=>{
+  res.send('Welcome to profile');
 });
 
 router.get('/:filename', (req, res) => {

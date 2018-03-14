@@ -6,10 +6,17 @@ import mongoose from 'mongoose';
 import profile from './api/profile';
 import users from './api/users';
 
-var url = process.env.MONGOLAB_URI;
+var getUrl = function(){
+  if (process.env.NODE_ENV == 'test') {
+    return process.env.MONGOLAB_URI_TEST;
+  } else {
+    return process.env.MONGOLAB_URI;
+  }
+};
+
+
 
 const server = express();
-// need to be added together to allow post request between express and react
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
@@ -44,11 +51,11 @@ server.use(function(req, res, next) {
   next(err);
 });
 
-mongoose.connect(url, function (err, db){
+mongoose.connect(getUrl(), function (err, db){
   if (err) {
     console.log('Unable to connect to the mongoDB server. Error:', err );
   } else {
-    console.log('Connect established to', url);
+    console.log('Connect established to', getUrl());
   }
 });
 
