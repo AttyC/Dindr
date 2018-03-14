@@ -13,7 +13,6 @@ let User = require('../models/users.js');
 const mongoURI = process.env.MONGOLAB_URI;
 const conn = mongoose.createConnection(mongoURI);
 const router = express.Router();
-const upload = multer({ storage });
 
 router.use(bodyParser.json());
 router.use(methodOverride('_method'));
@@ -42,6 +41,7 @@ const storage = new GridFsStorage({
   }
 });
 
+const upload = multer({ storage });
 router.post('/new', upload.single('file'), (req, res) => {
   User.find({ username: req.body.username }, function(err, user){
     user = user[0];
@@ -56,6 +56,7 @@ router.post('/new', upload.single('file'), (req, res) => {
 });
 
 router.get('/:filename', (req, res) => {
+  console.log(2)
   gfs.files.findOne({filename: req.params.filename}, (err, file) =>{ // gets filename from url
     if (!file || file.length === 0){
       return res.status(404).json({
