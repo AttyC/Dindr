@@ -8,12 +8,16 @@ Visit our Book: [https://leigan0.gitbooks.io/team-glow/content/](https://leigan0
 ### Our App:
 __Dinder__ is our app which helps developers find other developers to pair with.  
 
+### Blog posts from the project
+[Team Glow — we have 99 problems but MERN ain’t one..](https://medium.com/@leighanngant/team-glow-we-have-99-problems-but-mern-aint-one-b12b3955b949)
 
 ### Tutorials based on this repository
 
 * [How to set up an app with React and Express](https://leigan0.gitbooks.io/team-glow/content/Tutorials/How%20to%20set%20up%20and%20app%20with%20React%20and%20Express.html)
 
 * [How to set up mLab - cloud mongodb](https://leigan0.gitbooks.io/team-glow/content/Mongo/Mlab-set-up.html)
+
+![image](http://localhost:4444/img/dinder-screenshot.png)    
 
 ### How to use this code / view our app:
 
