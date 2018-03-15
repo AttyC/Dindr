@@ -2,18 +2,18 @@ const request = require('supertest');
 const server = require('../server');
 
 describe('POST/api/users/skills - find users by skill', () => {
-  let req = {skills: 'Loads'};
+  let req = {skills: 'Ruby'};
   it('should accept a new valid user', ()=>{
     return request(server).post('/api/users/skills')
     .send(req)
     .then((res) => {
-      expect(res.body[0].username).toBe("Alex")
+      expect(res.body[0].username).toBe("PiggieSmalls")
     });
   });
 });
 
 describe('GET/api/users - gets all users', () => {
-  let expectedProps = ['_id', 'username', 'email', 'skills', 'experience', '__v'];
+  let expectedProps = ['_id', 'username', 'email', 'skills', 'experience', '__v', 'profileUpload'];
   it('should return JSON array', () => {
     return request(server)
     .get('/api/users')
@@ -52,7 +52,7 @@ describe('GET/api/users - gets all users', () => {
 describe('GET/api/users/:username - get user by username', () => {
   it('should return an obj of type User', () => {
     return request(server)
-    .get('/api/users/Leigh-ann')
+    .get('/api/users/PiggieSmalls')
     .expect(200)
     .then((res) => {
       const reqKeys = ['_id', 'username', 'email', 'skills', 'experience'];
@@ -65,24 +65,6 @@ describe('GET/api/users/:username - get user by username', () => {
       expect(typeof item.email).toBe('string');
       expect(typeof item.skills).toBe('object');
       expect(typeof item.experience).toBe('string');
-    });
-  });
-
-  it('should return a user w/ requested id', () => {
-    return request(server)
-    .get('/api/users/Leigh-ann')
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toEqual([{
-        'username': 'Leigh-ann',
-        'email': 'Leigh-ann@123.com',
-        'skills': [
-          '\'Ruby,\'JS\''
-        ],
-        'experience': 'none',
-        '_id': '5aa30ecacb2d86541acedad8',
-        '__v': 0
-      }]);
     });
   });
 
@@ -110,22 +92,6 @@ describe('GET /api/users', function() {
       .expect(200)
       .then(res => {
         expect(typeof res.body[0].username).toBe('string');
-        expect(res.body[0].username).toBe('Sam');
-        expect(res.body[0].email).toBe('sam@123.com');
-      });
-  });
-});
-
-describe('GET /api/users', function() {
-  it('respond with json', function() {
-    return request(server)
-      .get('/api/users')
-      .set('Accept', 'serverlication/json') // set a header on request only accepts serverlication/json
-      .expect(200)
-      .then(res => {
-        expect(typeof res.body[1].username).toBe('string');
-        expect(res.body[1].username).toBe('Leigh-ann');
-        expect(res.body[1].email).toBe('Leigh-ann@123.com');
       });
   });
 });
